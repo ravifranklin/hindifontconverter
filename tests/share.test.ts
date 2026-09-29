@@ -1,0 +1,2 @@
+import {test} from 'node:test';import assert from 'node:assert/strict';import {shareUrl} from '../lib/share';
+test('complete Hindi/Nepali share text is correctly URL encoded',()=>{const text='भारत & नेपाल + ? #\n🙂\t'.repeat(1000);assert.equal(new URL(shareUrl('whatsapp',text)).searchParams.get('text'),text);assert.equal(new URL(shareUrl('gmail',text)).searchParams.get('body'),text);assert.equal(decodeURIComponent(shareUrl('email',text).split('body=')[1]),text);assert.throws(()=>shareUrl('gmail',''));});

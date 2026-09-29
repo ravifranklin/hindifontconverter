@@ -1,0 +1,86 @@
+[
+  {
+    "route": "krutidev-to-unicode",
+    "example": "भारत की भाषा।",
+    "clear": true,
+    "emptyActionsDisabled": true
+  },
+  {
+    "route": "unicode-to-krutidev",
+    "example": "Hkkjr dh Hkk\"kkA",
+    "clear": true,
+    "emptyActionsDisabled": true
+  },
+  {
+    "route": "krutidev-to-chanakya",
+    "example": "ÖæÚÌ ·è ÖæáæÐ",
+    "clear": true,
+    "emptyActionsDisabled": true
+  },
+  {
+    "route": "krutidev-to-mangal",
+    "example": "भारत की भाषा।",
+    "clear": true,
+    "emptyActionsDisabled": true
+  },
+  {
+    "route": "mangal-to-krutidev",
+    "example": "Hkkjr dh Hkk\"kkA",
+    "clear": true,
+    "emptyActionsDisabled": true
+  },
+  {
+    "route": "preeti-to-unicode",
+    "example": "नेपाली भाषा",
+    "clear": true,
+    "emptyActionsDisabled": true
+  },
+  {
+    "route": "unicode-to-preeti",
+    "example": "ef/t sL efषf.",
+    "clear": true,
+    "emptyActionsDisabled": true
+  },
+  {
+    "route": "chanakya-to-unicode",
+    "example": "भारत",
+    "clear": true,
+    "emptyActionsDisabled": true
+  },
+  {
+    "route": "unicode-to-chanakya",
+    "example": "ÖæÚÌ ·è ÖæáæÐ",
+    "clear": true,
+    "emptyActionsDisabled": true
+  },
+  {
+    "route": "chanakya-to-krutidev",
+    "example": "Hkkjr",
+    "clear": true,
+    "emptyActionsDisabled": true
+  },
+  {
+    "route": "devlys-to-unicode",
+    "example": "भारत की भाषा।",
+    "clear": true,
+    "emptyActionsDisabled": true
+  },
+  {
+    "route": "unicode-to-devlys",
+    "example": "Hkkjr dh Hkk\"kkA",
+    "clear": true,
+    "emptyActionsDisabled": true
+  },
+  {
+    "route": "devlys-to-mangal",
+    "example": "भारत की भाषा।",
+    "clear": true,
+    "emptyActionsDisabled": true
+  },
+  {
+    "route": "mangal-to-devlys",
+    "example": "Hkkjr dh Hkk\"kkA",
+    "clear": true,
+    "emptyActionsDisabled": true
+  }
+]

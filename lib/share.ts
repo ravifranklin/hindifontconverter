@@ -1,0 +1,1 @@
+export function shareUrl(target:'whatsapp'|'gmail'|'email',text:string){if(!text)throw Error('Cannot share an empty result');const encoded=encodeURIComponent(text);return target==='whatsapp'?'https://wa.me/?text='+encoded:target==='gmail'?'https://mail.google.com/mail/?view=cm&fs=1&body='+encoded:'mailto:?body='+encoded;}

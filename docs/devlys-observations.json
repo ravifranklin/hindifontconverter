@@ -1,0 +1,858 @@
+[
+  {
+    "input": "ñ",
+    "output": "॰"
+  },
+  {
+    "input": ")Z",
+    "output": "र्द्ध"
+  },
+  {
+    "input": "'",
+    "output": "श्"
+  },
+  {
+    "input": "\"",
+    "output": "ष्"
+  },
+  {
+    "input": "å",
+    "output": "०"
+  },
+  {
+    "input": "ƒ",
+    "output": "१"
+  },
+  {
+    "input": "„",
+    "output": "२"
+  },
+  {
+    "input": "…",
+    "output": "३"
+  },
+  {
+    "input": "†",
+    "output": "४"
+  },
+  {
+    "input": "‡",
+    "output": "५"
+  },
+  {
+    "input": "ˆ",
+    "output": "६"
+  },
+  {
+    "input": "‰",
+    "output": "७"
+  },
+  {
+    "input": "Š",
+    "output": "८"
+  },
+  {
+    "input": "‹",
+    "output": "९"
+  },
+  {
+    "input": "¶+",
+    "output": "फ़्"
+  },
+  {
+    "input": "d+",
+    "output": "क़"
+  },
+  {
+    "input": "[+k",
+    "output": "ख़"
+  },
+  {
+    "input": "[+",
+    "output": "ख़्"
+  },
+  {
+    "input": "x+",
+    "output": "ग़"
+  },
+  {
+    "input": "T+",
+    "output": "ज़्"
+  },
+  {
+    "input": "t+",
+    "output": "ज़"
+  },
+  {
+    "input": "M+",
+    "output": "ड़"
+  },
+  {
+    "input": "<+",
+    "output": "ढ़"
+  },
+  {
+    "input": "Q+",
+    "output": "फ़"
+  },
+  {
+    "input": ";+",
+    "output": "य़"
+  },
+  {
+    "input": "j+",
+    "output": "ऱ"
+  },
+  {
+    "input": "u+",
+    "output": "ऩ"
+  },
+  {
+    "input": "Ùk",
+    "output": "त्त"
+  },
+  {
+    "input": "Ù",
+    "output": "त्त्"
+  },
+  {
+    "input": "ä",
+    "output": "क्त"
+  },
+  {
+    "input": "–",
+    "output": "दृ"
+  },
+  {
+    "input": "—",
+    "output": "कृ"
+  },
+  {
+    "input": "é",
+    "output": "न्न"
+  },
+  {
+    "input": "™",
+    "output": "न्न्"
+  },
+  {
+    "input": "à",
+    "output": "ह्न"
+  },
+  {
+    "input": "á",
+    "output": "ह्य"
+  },
+  {
+    "input": "â",
+    "output": "हृ"
+  },
+  {
+    "input": "ã",
+    "output": "ह्म"
+  },
+  {
+    "input": "ºz",
+    "output": "ह्र"
+  },
+  {
+    "input": "º",
+    "output": "ह्"
+  },
+  {
+    "input": "í",
+    "output": "द्द"
+  },
+  {
+    "input": "{k",
+    "output": "क्ष"
+  },
+  {
+    "input": "{",
+    "output": "क्ष्"
+  },
+  {
+    "input": "=",
+    "output": "त्र"
+  },
+  {
+    "input": "«",
+    "output": "त्र्"
+  },
+  {
+    "input": "Nî",
+    "output": "छ्य"
+  },
+  {
+    "input": "Vî",
+    "output": "ट्य"
+  },
+  {
+    "input": "Bî",
+    "output": "ठ्य"
+  },
+  {
+    "input": "Mî",
+    "output": "ड्य"
+  },
+  {
+    "input": "<î",
+    "output": "ढ्य"
+  },
+  {
+    "input": "|",
+    "output": "द्य"
+  },
+  {
+    "input": "K",
+    "output": "ज्ञ"
+  },
+  {
+    "input": "}",
+    "output": "द्व"
+  },
+  {
+    "input": "J",
+    "output": "श्र"
+  },
+  {
+    "input": "Vª",
+    "output": "ट्र"
+  },
+  {
+    "input": "Mª",
+    "output": "ड्र"
+  },
+  {
+    "input": "<ªª",
+    "output": "ढ्र"
+  },
+  {
+    "input": "Nª",
+    "output": "छ्र"
+  },
+  {
+    "input": "Ø",
+    "output": "क्र"
+  },
+  {
+    "input": "Ý",
+    "output": "फ्र"
+  },
+  {
+    "input": "nzZ",
+    "output": "र्द्र"
+  },
+  {
+    "input": "æ",
+    "output": "द्र"
+  },
+  {
+    "input": "ç",
+    "output": "प्र"
+  },
+  {
+    "input": "Á",
+    "output": "प्र"
+  },
+  {
+    "input": "xz",
+    "output": "ग्र"
+  },
+  {
+    "input": "#",
+    "output": "रु"
+  },
+  {
+    "input": ":",
+    "output": "रू"
+  },
+  {
+    "input": "v‚",
+    "output": "ऑ"
+  },
+  {
+    "input": "vks",
+    "output": "ओ"
+  },
+  {
+    "input": "vkS",
+    "output": "औ"
+  },
+  {
+    "input": "vk",
+    "output": "आ"
+  },
+  {
+    "input": "v",
+    "output": "अ"
+  },
+  {
+    "input": "b±",
+    "output": "ईं"
+  },
+  {
+    "input": "Ã",
+    "output": "ई"
+  },
+  {
+    "input": "bZ",
+    "output": "ई"
+  },
+  {
+    "input": "b",
+    "output": "इ"
+  },
+  {
+    "input": "m",
+    "output": "उ"
+  },
+  {
+    "input": "Å",
+    "output": "ऊ"
+  },
+  {
+    "input": ",s",
+    "output": "ऐ"
+  },
+  {
+    "input": ",",
+    "output": "ए"
+  },
+  {
+    "input": "_",
+    "output": "ऋ"
+  },
+  {
+    "input": "ô",
+    "output": "क्क"
+  },
+  {
+    "input": "d",
+    "output": "क"
+  },
+  {
+    "input": "Dk",
+    "output": "क"
+  },
+  {
+    "input": "D",
+    "output": "क्"
+  },
+  {
+    "input": "[k",
+    "output": "ख"
+  },
+  {
+    "input": "[",
+    "output": "ख्"
+  },
+  {
+    "input": "x",
+    "output": "ग"
+  },
+  {
+    "input": "Xk",
+    "output": "ग"
+  },
+  {
+    "input": "X",
+    "output": "ग्"
+  },
+  {
+    "input": "Ä",
+    "output": "घ"
+  },
+  {
+    "input": "?k",
+    "output": "घ"
+  },
+  {
+    "input": "?",
+    "output": "घ्"
+  },
+  {
+    "input": "³",
+    "output": "ङ"
+  },
+  {
+    "input": "pkS",
+    "output": "चौ"
+  },
+  {
+    "input": "p",
+    "output": "च"
+  },
+  {
+    "input": "Pk",
+    "output": "च"
+  },
+  {
+    "input": "P",
+    "output": "च्"
+  },
+  {
+    "input": "N",
+    "output": "छ"
+  },
+  {
+    "input": "t",
+    "output": "ज"
+  },
+  {
+    "input": "Tk",
+    "output": "ज"
+  },
+  {
+    "input": "T",
+    "output": "ज्"
+  },
+  {
+    "input": ">",
+    "output": "झ"
+  },
+  {
+    "input": "÷",
+    "output": "झ्"
+  },
+  {
+    "input": "¥",
+    "output": "ञ"
+  },
+  {
+    "input": "ê",
+    "output": "ट्ट"
+  },
+  {
+    "input": "ë",
+    "output": "ट्ठ"
+  },
+  {
+    "input": "V",
+    "output": "ट"
+  },
+  {
+    "input": "B",
+    "output": "ठ"
+  },
+  {
+    "input": "ì",
+    "output": "ड्ड"
+  },
+  {
+    "input": "ï",
+    "output": "ड्ढ"
+  },
+  {
+    "input": "M",
+    "output": "ड"
+  },
+  {
+    "input": "<",
+    "output": "ढ"
+  },
+  {
+    "input": ".k",
+    "output": "ण"
+  },
+  {
+    "input": ".",
+    "output": "ण्"
+  },
+  {
+    "input": "r",
+    "output": "त"
+  },
+  {
+    "input": "Rk",
+    "output": "त"
+  },
+  {
+    "input": "R",
+    "output": "त्"
+  },
+  {
+    "input": "Fk",
+    "output": "थ"
+  },
+  {
+    "input": "F",
+    "output": "थ"
+  },
+  {
+    "input": ")",
+    "output": "द्ध"
+  },
+  {
+    "input": "n",
+    "output": "द"
+  },
+  {
+    "input": "/k",
+    "output": "ध"
+  },
+  {
+    "input": "èk",
+    "output": "ध"
+  },
+  {
+    "input": "/",
+    "output": "ध्"
+  },
+  {
+    "input": "Ë",
+    "output": "ध्"
+  },
+  {
+    "input": "è",
+    "output": "ध्"
+  },
+  {
+    "input": "u",
+    "output": "न"
+  },
+  {
+    "input": "Uk",
+    "output": "न"
+  },
+  {
+    "input": "U",
+    "output": "न्"
+  },
+  {
+    "input": "i",
+    "output": "प"
+  },
+  {
+    "input": "Ik",
+    "output": "प"
+  },
+  {
+    "input": "I",
+    "output": "प्"
+  },
+  {
+    "input": "Q",
+    "output": "फ"
+  },
+  {
+    "input": "¶",
+    "output": "फ्"
+  },
+  {
+    "input": "c",
+    "output": "ब"
+  },
+  {
+    "input": "Ck",
+    "output": "ब"
+  },
+  {
+    "input": "C",
+    "output": "ब्"
+  },
+  {
+    "input": "Hk",
+    "output": "भ"
+  },
+  {
+    "input": "H",
+    "output": "भ्"
+  },
+  {
+    "input": "e",
+    "output": "म"
+  },
+  {
+    "input": "Ek",
+    "output": "म"
+  },
+  {
+    "input": "E",
+    "output": "म्"
+  },
+  {
+    "input": ";",
+    "output": "य"
+  },
+  {
+    "input": "¸",
+    "output": "य्"
+  },
+  {
+    "input": "j",
+    "output": "र"
+  },
+  {
+    "input": "y",
+    "output": "ल"
+  },
+  {
+    "input": "Yk",
+    "output": "ल"
+  },
+  {
+    "input": "Y",
+    "output": "ल्"
+  },
+  {
+    "input": "G",
+    "output": "ळ"
+  },
+  {
+    "input": "o",
+    "output": "व"
+  },
+  {
+    "input": "Ok",
+    "output": "व"
+  },
+  {
+    "input": "O",
+    "output": "व्"
+  },
+  {
+    "input": "'k",
+    "output": "श"
+  },
+  {
+    "input": "\"k",
+    "output": "ष"
+  },
+  {
+    "input": "l",
+    "output": "स"
+  },
+  {
+    "input": "Lk",
+    "output": "स"
+  },
+  {
+    "input": "L",
+    "output": "स्"
+  },
+  {
+    "input": "g",
+    "output": "ह"
+  },
+  {
+    "input": "È",
+    "output": "ीं"
+  },
+  {
+    "input": "z",
+    "output": "्र"
+  },
+  {
+    "input": "Ì",
+    "output": "द्द"
+  },
+  {
+    "input": "Í",
+    "output": "ट्ट"
+  },
+  {
+    "input": "Î",
+    "output": "ट्ठ"
+  },
+  {
+    "input": "Ï",
+    "output": "ड्ड"
+  },
+  {
+    "input": "Ñ",
+    "output": "कृ"
+  },
+  {
+    "input": "Ò",
+    "output": "भ"
+  },
+  {
+    "input": "Ó",
+    "output": "्य"
+  },
+  {
+    "input": "Ô",
+    "output": "ड्ढ"
+  },
+  {
+    "input": "Ö",
+    "output": "झ्"
+  },
+  {
+    "input": "Ük",
+    "output": "श"
+  },
+  {
+    "input": "Ü",
+    "output": "श्"
+  },
+  {
+    "input": "‚",
+    "output": "ॉ"
+  },
+  {
+    "input": "ks",
+    "output": "ो"
+  },
+  {
+    "input": "kS",
+    "output": "ौ"
+  },
+  {
+    "input": "k",
+    "output": "ा"
+  },
+  {
+    "input": "h",
+    "output": "ी"
+  },
+  {
+    "input": "q",
+    "output": "ु"
+  },
+  {
+    "input": "w",
+    "output": "ू"
+  },
+  {
+    "input": "`",
+    "output": "ृ"
+  },
+  {
+    "input": "s",
+    "output": "े"
+  },
+  {
+    "input": "S",
+    "output": "ै"
+  },
+  {
+    "input": "a",
+    "output": "ं"
+  },
+  {
+    "input": "¡",
+    "output": "ँ"
+  },
+  {
+    "input": "%",
+    "output": "ः"
+  },
+  {
+    "input": "W",
+    "output": "ॅ"
+  },
+  {
+    "input": "•",
+    "output": "ऽ"
+  },
+  {
+    "input": "·",
+    "output": "ऽ"
+  },
+  {
+    "input": "∙",
+    "output": "ऽ"
+  },
+  {
+    "input": "~j",
+    "output": "्र"
+  },
+  {
+    "input": "~",
+    "output": "्"
+  },
+  {
+    "input": "\\",
+    "output": "?"
+  },
+  {
+    "input": "+",
+    "output": "़"
+  },
+  {
+    "input": "^",
+    "output": "‘"
+  },
+  {
+    "input": "*",
+    "output": "’"
+  },
+  {
+    "input": "Þ",
+    "output": "”"
+  },
+  {
+    "input": "ß",
+    "output": "“"
+  },
+  {
+    "input": "(",
+    "output": ";"
+  },
+  {
+    "input": "¼",
+    "output": "("
+  },
+  {
+    "input": "½",
+    "output": ")"
+  },
+  {
+    "input": "¿",
+    "output": "{"
+  },
+  {
+    "input": "À",
+    "output": "}"
+  },
+  {
+    "input": "¾",
+    "output": "="
+  },
+  {
+    "input": "A",
+    "output": "।"
+  },
+  {
+    "input": "-",
+    "output": "."
+  },
+  {
+    "input": "&",
+    "output": "-"
+  },
+  {
+    "input": "Œ",
+    "output": "॰"
+  },
+  {
+    "input": "]",
+    "output": ","
+  },
+  {
+    "input": "~ ",
+    "output": "् "
+  },
+  {
+    "input": "@",
+    "output": "/"
+  },
+  {
+    "input": "‘",
+    "output": "ष्"
+  },
+  {
+    "input": "’",
+    "output": "ष्"
+  },
+  {
+    "input": "“",
+    "output": "श्"
+  },
+  {
+    "input": "”",
+    "output": "श्"
+  }
+]

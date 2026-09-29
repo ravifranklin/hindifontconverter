@@ -1,0 +1,155 @@
+[
+  {
+    "page": "kruti-dev-010-hindi-font-download.php",
+    "resources": [
+      "/apple-icon-57x57.png",
+      "/apple-icon-60x60.png",
+      "/apple-icon-72x72.png",
+      "/apple-icon-76x76.png",
+      "/apple-icon-114x114.png",
+      "/apple-icon-120x120.png",
+      "/apple-icon-144x144.png",
+      "/apple-icon-152x152.png",
+      "/apple-icon-180x180.png",
+      "/android-icon-192x192.png",
+      "/favicon-32x32.png",
+      "/favicon-96x96.png",
+      "/favicon-16x16.png",
+      "krutidev-fonts/krutidev-010-hindi-font-download.ttf",
+      "images/krutidev-font-install/krutidev-font-how-to-install.PNG"
+    ],
+    "editors": [],
+    "triggers": []
+  },
+  {
+    "page": "preeti-font-download.php",
+    "resources": [
+      "/apple-icon-57x57.png",
+      "/apple-icon-60x60.png",
+      "/apple-icon-72x72.png",
+      "/apple-icon-76x76.png",
+      "/apple-icon-114x114.png",
+      "/apple-icon-120x120.png",
+      "/apple-icon-144x144.png",
+      "/apple-icon-152x152.png",
+      "/apple-icon-180x180.png",
+      "/android-icon-192x192.png",
+      "/favicon-32x32.png",
+      "/favicon-96x96.png",
+      "/favicon-16x16.png"
+    ],
+    "editors": [],
+    "triggers": []
+  },
+  {
+    "page": "chanakya-font-download.php",
+    "resources": [
+      "/apple-icon-57x57.png",
+      "/apple-icon-60x60.png",
+      "/apple-icon-72x72.png",
+      "/apple-icon-76x76.png",
+      "/apple-icon-114x114.png",
+      "/apple-icon-120x120.png",
+      "/apple-icon-144x144.png",
+      "/apple-icon-152x152.png",
+      "/apple-icon-180x180.png",
+      "/android-icon-192x192.png",
+      "/favicon-32x32.png",
+      "/favicon-96x96.png",
+      "/favicon-16x16.png",
+      "chanakya-fonts/chanakya.ttf"
+    ],
+    "editors": [],
+    "triggers": []
+  },
+  {
+    "page": "kruti-dev-keyboard.php",
+    "resources": [
+      "/apple-icon-57x57.png",
+      "/apple-icon-60x60.png",
+      "/apple-icon-72x72.png",
+      "/apple-icon-76x76.png",
+      "/apple-icon-114x114.png",
+      "/apple-icon-120x120.png",
+      "/apple-icon-144x144.png",
+      "/apple-icon-152x152.png",
+      "/apple-icon-180x180.png",
+      "/android-icon-192x192.png",
+      "/favicon-32x32.png",
+      "/favicon-96x96.png",
+      "/favicon-16x16.png",
+      "uploads/kruti-dev-keyboard.pdf",
+      "images/kruti-dev-keyboard.jpg"
+    ],
+    "editors": [],
+    "triggers": []
+  },
+  {
+    "page": "write-krutidev-get-unicode.php",
+    "resources": [
+      "/apple-icon-57x57.png",
+      "/apple-icon-60x60.png",
+      "/apple-icon-72x72.png",
+      "/apple-icon-76x76.png",
+      "/apple-icon-114x114.png",
+      "/apple-icon-120x120.png",
+      "/apple-icon-144x144.png",
+      "/apple-icon-152x152.png",
+      "/apple-icon-180x180.png",
+      "/android-icon-192x192.png",
+      "/favicon-32x32.png",
+      "/favicon-96x96.png",
+      "/favicon-16x16.png",
+      "https://www.krutidevunicodeconverter.com/images/kruti-dev-keyboard.jpg"
+    ],
+    "editors": [
+      "<textarea rows=\"6\" class=\"form-control\" placeholder=\"Type in Krutidev and Get Unicode Text\" id=\"krutitext\" name=\"krutitext\" onkeyup=\"krutiunicode()\" onpaste=\"krutiunicode()\" onchange=\"krutiunicode()\" style=\"font-size:22px;\">"
+    ],
+    "triggers": [
+      "krutiunicode()",
+      "krutiunicode()"
+    ]
+  },
+  {
+    "page": "reach-us.php",
+    "resources": [
+      "/apple-icon-57x57.png",
+      "/apple-icon-60x60.png",
+      "/apple-icon-72x72.png",
+      "/apple-icon-76x76.png",
+      "/apple-icon-114x114.png",
+      "/apple-icon-120x120.png",
+      "/apple-icon-144x144.png",
+      "/apple-icon-152x152.png",
+      "/apple-icon-180x180.png",
+      "/android-icon-192x192.png",
+      "/favicon-32x32.png",
+      "/favicon-96x96.png",
+      "/favicon-16x16.png"
+    ],
+    "editors": [
+      "<textarea class=\"form-control\" id=\"message\" name=\"message\" placeholder=\"Please enter your message here...\" rows=\"5\">"
+    ],
+    "triggers": []
+  },
+  {
+    "page": "privacy.php",
+    "resources": [
+      "/apple-icon-57x57.png",
+      "/apple-icon-60x60.png",
+      "/apple-icon-72x72.png",
+      "/apple-icon-76x76.png",
+      "/apple-icon-114x114.png",
+      "/apple-icon-120x120.png",
+      "/apple-icon-144x144.png",
+      "/apple-icon-152x152.png",
+      "/apple-icon-180x180.png",
+      "/android-icon-192x192.png",
+      "/favicon-32x32.png",
+      "/favicon-96x96.png",
+      "/favicon-16x16.png"
+    ],
+    "editors": [],
+    "triggers": []
+  }
+]

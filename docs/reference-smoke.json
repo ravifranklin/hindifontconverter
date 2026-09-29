@@ -1,0 +1,338 @@
+[
+  {
+    "path": "",
+    "input": "Hkkjr",
+    "expected": "भारत",
+    "output": "भारत",
+    "info": {
+      "actions": [
+        {
+          "tag": "A",
+          "text": "Convert To Unicode"
+        }
+      ],
+      "fields": [
+        {
+          "id": "krutitext",
+          "placeholder": "Enter KrutiDev Text"
+        },
+        {
+          "id": "unicodetext",
+          "placeholder": "Converted Unicode Text"
+        }
+      ]
+    }
+  },
+  {
+    "path": "unicode-to-krutidev-converter.php",
+    "input": "भारत",
+    "expected": "Hkkjr",
+    "output": "Hkkjr",
+    "info": {
+      "actions": [
+        {
+          "tag": "A",
+          "text": "Convert To Krutidev"
+        }
+      ],
+      "fields": [
+        {
+          "id": "unicodetext",
+          "placeholder": "Enter Unicode Text"
+        },
+        {
+          "id": "krutitext",
+          "placeholder": "Converted Krutidev Text"
+        }
+      ]
+    }
+  },
+  {
+    "path": "krutidev-to-chanakya-converter.php",
+    "input": "Hkkjr",
+    "expected": null,
+    "output": "ÖæÚUÌ",
+    "info": {
+      "actions": [
+        {
+          "tag": "A",
+          "text": "Convert To Chanakya"
+        }
+      ],
+      "fields": [
+        {
+          "id": "krutitext",
+          "placeholder": "Enter KrutiDev Text"
+        },
+        {
+          "id": "chanakya_text",
+          "placeholder": ""
+        }
+      ]
+    }
+  },
+  {
+    "path": "kruti-dev-to-mangal-converter.php",
+    "input": "Hkkjr",
+    "expected": "भारत",
+    "output": "भारत",
+    "info": {
+      "actions": [
+        {
+          "tag": "A",
+          "text": "Convert To Mangal"
+        }
+      ],
+      "fields": [
+        {
+          "id": "krutitext",
+          "placeholder": "Enter KrutiDev Text"
+        },
+        {
+          "id": "mangaltext",
+          "placeholder": "Converted Mangal Text"
+        }
+      ]
+    }
+  },
+  {
+    "path": "mangal-to-kruti-dev-converter.php",
+    "input": "भारत",
+    "expected": "Hkkjr",
+    "output": "Hkkjr",
+    "info": {
+      "actions": [
+        {
+          "tag": "A",
+          "text": "Convert To Krutidev"
+        }
+      ],
+      "fields": [
+        {
+          "id": "mangaltext",
+          "placeholder": "Enter Mangal Text"
+        },
+        {
+          "id": "krutitext",
+          "placeholder": "Converted Krutidev Text"
+        }
+      ]
+    }
+  },
+  {
+    "path": "preeti-to-unicode-converter.php",
+    "input": "g]kfn",
+    "expected": "नेपाल",
+    "output": "नेपाल",
+    "info": {
+      "actions": [
+        {
+          "tag": "A",
+          "text": "Convert To Unicode"
+        }
+      ],
+      "fields": [
+        {
+          "id": "preeti_text",
+          "placeholder": ""
+        },
+        {
+          "id": "unicode_text",
+          "placeholder": "Converted Unicode Text"
+        }
+      ]
+    }
+  },
+  {
+    "path": "unicode-to-preeti-converter.php",
+    "input": "नेपाल",
+    "expected": "g]kfn",
+    "output": "g]kfn",
+    "info": {
+      "actions": [
+        {
+          "tag": "A",
+          "text": "Convert To Preeti"
+        }
+      ],
+      "fields": [
+        {
+          "id": "unicode_text",
+          "placeholder": "Enter Unicode Text"
+        },
+        {
+          "id": "preeti_text",
+          "placeholder": ""
+        }
+      ]
+    }
+  },
+  {
+    "path": "chanakya-to-unicode-converter.php",
+    "input": "ÖæÚUÌ",
+    "expected": "भारत",
+    "output": "भारत",
+    "info": {
+      "actions": [
+        {
+          "tag": "A",
+          "text": "Convert To Unicode"
+        }
+      ],
+      "fields": [
+        {
+          "id": "chanakya_text",
+          "placeholder": ""
+        },
+        {
+          "id": "unicode_text",
+          "placeholder": "Converted Unicode Text"
+        }
+      ]
+    }
+  },
+  {
+    "path": "unicode-to-chanakya-converter.php",
+    "input": "भारत",
+    "expected": "ÖæÚUÌ",
+    "output": "ÖæÚUÌ",
+    "info": {
+      "actions": [
+        {
+          "tag": "A",
+          "text": "Convert To Chanakya"
+        }
+      ],
+      "fields": [
+        {
+          "id": "unicode_text",
+          "placeholder": "Enter Unicode Text"
+        },
+        {
+          "id": "chanakya_text",
+          "placeholder": ""
+        }
+      ]
+    }
+  },
+  {
+    "path": "chanakya-to-krutidev-converter.php",
+    "input": "ÖæÚUÌ",
+    "expected": "Hkkjr",
+    "output": "Hkkjr",
+    "info": {
+      "actions": [
+        {
+          "tag": "A",
+          "text": "Convert To KrutiDev"
+        }
+      ],
+      "fields": [
+        {
+          "id": "chanakya_text",
+          "placeholder": "Enter Chanakya Text"
+        },
+        {
+          "id": "krutitext",
+          "placeholder": ""
+        }
+      ]
+    }
+  },
+  {
+    "path": "devlys-to-unicode-converter.php",
+    "input": "Hkkjr",
+    "expected": "भारत",
+    "output": "भारत",
+    "info": {
+      "actions": [
+        {
+          "tag": "A",
+          "text": "Convert To Unicode"
+        }
+      ],
+      "fields": [
+        {
+          "id": "devlystext",
+          "placeholder": "Enter DevLys Text"
+        },
+        {
+          "id": "unicodetext",
+          "placeholder": "Converted Unicode Text"
+        }
+      ]
+    }
+  },
+  {
+    "path": "unicode-to-devlys-converter.php",
+    "input": "भारत",
+    "expected": "Hkkjr",
+    "output": "Hkkjr",
+    "info": {
+      "actions": [
+        {
+          "tag": "A",
+          "text": "Convert To DevLys"
+        }
+      ],
+      "fields": [
+        {
+          "id": "unicodetext",
+          "placeholder": "Enter Unicode Text"
+        },
+        {
+          "id": "devlystext",
+          "placeholder": "Converted DevLys Text"
+        }
+      ]
+    }
+  },
+  {
+    "path": "devlys-to-mangal-converter.php",
+    "input": "Hkkjr",
+    "expected": "भारत",
+    "output": "भारत",
+    "info": {
+      "actions": [
+        {
+          "tag": "A",
+          "text": "Convert To Mangal"
+        }
+      ],
+      "fields": [
+        {
+          "id": "devlystext",
+          "placeholder": "Enter DevLys Text"
+        },
+        {
+          "id": "unicodetext",
+          "placeholder": "Converted Mangal Text"
+        }
+      ]
+    }
+  },
+  {
+    "path": "mangal-to-devlys-converter.php",
+    "input": "भारत",
+    "expected": "Hkkjr",
+    "output": "Hkkjr",
+    "info": {
+      "actions": [
+        {
+          "tag": "A",
+          "text": "Convert To DevLys"
+        }
+      ],
+      "fields": [
+        {
+          "id": "unicodetext",
+          "placeholder": "Enter Mangal Text"
+        },
+        {
+          "id": "devlystext",
+          "placeholder": "Converted DevLys Text"
+        }
+      ]
+    }
+  }
+]

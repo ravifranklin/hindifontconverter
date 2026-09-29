@@ -1,0 +1,136 @@
+[
+  {
+    "path": "",
+    "from": "krutidev",
+    "to": "unicode",
+    "exact": true,
+    "semantic": true,
+    "differences": []
+  },
+  {
+    "path": "unicode-to-krutidev-converter.php",
+    "from": "unicode",
+    "to": "krutidev",
+    "exact": true,
+    "semantic": true,
+    "differences": []
+  },
+  {
+    "path": "krutidev-to-chanakya-converter.php",
+    "from": "krutidev",
+    "to": "chanakya",
+    "exact": true,
+    "semantic": true,
+    "differences": []
+  },
+  {
+    "path": "kruti-dev-to-mangal-converter.php",
+    "from": "krutidev",
+    "to": "mangal",
+    "exact": true,
+    "semantic": true,
+    "differences": []
+  },
+  {
+    "path": "mangal-to-kruti-dev-converter.php",
+    "from": "mangal",
+    "to": "krutidev",
+    "exact": true,
+    "semantic": true,
+    "differences": []
+  },
+  {
+    "path": "preeti-to-unicode-converter.php",
+    "from": "preeti",
+    "to": "unicode",
+    "exact": true,
+    "semantic": true,
+    "differences": []
+  },
+  {
+    "path": "unicode-to-preeti-converter.php",
+    "from": "unicode",
+    "to": "preeti",
+    "exact": true,
+    "semantic": true,
+    "differences": []
+  },
+  {
+    "path": "chanakya-to-unicode-converter.php",
+    "from": "chanakya",
+    "to": "unicode",
+    "exact": false,
+    "semantic": false,
+    "differences": [
+      {
+        "line": 6,
+        "ours": "अँ अं अः",
+        "reference": "अँ अं अ:"
+      },
+      {
+        "line": 7,
+        "ours": "०१२३४५६७८९",
+        "reference": "0123456789"
+      }
+    ]
+  },
+  {
+    "path": "unicode-to-chanakya-converter.php",
+    "from": "unicode",
+    "to": "chanakya",
+    "exact": true,
+    "semantic": true,
+    "differences": []
+  },
+  {
+    "path": "chanakya-to-krutidev-converter.php",
+    "from": "chanakya",
+    "to": "krutidev",
+    "exact": false,
+    "semantic": false,
+    "differences": [
+      {
+        "line": 6,
+        "ours": "v¡ va v%",
+        "reference": "v¡ va v:"
+      },
+      {
+        "line": 7,
+        "ours": "åƒ„…†‡ˆ‰Š‹",
+        "reference": "0123456789"
+      }
+    ]
+  },
+  {
+    "path": "devlys-to-unicode-converter.php",
+    "from": "devlys",
+    "to": "unicode",
+    "exact": true,
+    "semantic": true,
+    "differences": []
+  },
+  {
+    "path": "unicode-to-devlys-converter.php",
+    "from": "unicode",
+    "to": "devlys",
+    "exact": true,
+    "semantic": true,
+    "differences": []
+  },
+  {
+    "path": "devlys-to-mangal-converter.php",
+    "from": "devlys",
+    "to": "mangal",
+    "exact": true,
+    "semantic": true,
+    "differences": []
+  },
+  {
+    "path": "mangal-to-devlys-converter.php",
+    "from": "mangal",
+    "to": "devlys",
+    "exact": true,
+    "semantic": true,
+    "differences": []
+  }
+]
