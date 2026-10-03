@@ -349,7 +349,7 @@ const chanakya = {
     "Ûæ": "झ",
     "Û": "झ्",
     "†æ": "ञ",
-    "†": "ञ्",
+    "†": "ब्",
     "Å": "ट",
     "Æ": "ठ",
     "Ç": "ड",
@@ -387,7 +387,7 @@ const chanakya = {
     "ß": "व",
     "àæ": "श",
     "³æ": "श",
-    "o": "श",
+    "o": "श्र",
     "³": "श्",
     "à": "श्",
     "c": "ष्",
@@ -439,7 +439,17 @@ const chanakya = {
     "ü": "",
     "Z": "ं",
     "¤": "",
-    "U": ""
+    "U": "",
+    "·¤¸": "क़",
+    "·¸": "क़",
+    "¹¸": "ख़",
+    "»¸": "ग़",
+    "Á¸": "ज़",
+    "Ç¸": "ड़",
+    "É¸": "ढ़",
+    "È¤¸": "फ़",
+    "È¸": "फ़",
+    "‘": "च्"
 };
 const devlys = {
     "ñ": "॰",
@@ -653,7 +663,7 @@ const devlys = {
     "~ ": "् ",
     "@": "/",
     "‘": "ष्",
-    "’": "ष्",
+    "’": "श्",
     "“": "श्",
     "”": "श्",
     "f": "",
@@ -662,7 +672,8 @@ const devlys = {
     "É": "ं",
     "Æ": "र्",
     "Ê": "ी",
-    "±": "ं"
+    "±": "ं",
+    "’k": "श"
 };
 const preeti = {
     "0": "ण्",
@@ -795,7 +806,12 @@ const preeti = {
     "cf}": "औ",
     "P]": "ऐ",
     "0f": "ण",
-    "Þ": "़"
+    "Þ": "़",
+    "¥": "-",
+    "Ù": ";",
+    "÷": "/",
+    "if": "ष",
+    "–": "-"
 };
 const I = '\uE000', R = '\uE001', consonant = '[क-हक़-य़]़?';
 const cluster = `${consonant}(?:्[‍‌]?${consonant})*`, signs = '[ािीुूृॄॅेैॉोौंँः]*';
@@ -835,18 +851,21 @@ const reverse = Object.fromEntries(Object.entries(maps).map(([name, map]) => {
         Object.assign(rev, { 'भ': 'Hk', 'क': 'd', 'श': "'k", 'ष': '"k', 'ई': 'bZ', 'ि': 'f', 'र्': 'Z', '़': '+', 'फ़्': '¶+', 'क़': 'd+', 'फ़': 'Q+', '।': 'A', '-': '&' });
     // Verified against Kruti Dev 010 glyphs: avoid straight quotes that editors smarten.
     if (name === 'krutidev')
-        Object.assign(rev, { 'श': '“k', 'श्': '“', 'ष': '‘k', 'ष्': '‘', ':': '%', 'क्त': 'Dr' });
+        Object.assign(rev, { 'श': '“k', 'श्': '“', 'ष': '‘k', 'ष्': '‘', ':': '%', 'क्त': 'Dr', 'क्क': 'Dd', 'ड्ड': 'M~M', 'ब्र': 'cz' });
+    if (name === 'devlys')
+        Object.assign(rev, { 'श': '’k', 'श्': '’', 'ब्र': 'cz' });
     if (name === 'chanakya') {
-        Object.assign(rev, { 'ि': 'ç', 'र्': 'ü', 'भ': 'Ö', '़': '¸', 'र': 'ÚU', 'क': '·¤', 'ट': 'ÅU', 'फ': 'È¤', 'के': '·Ô¤', 'कै': '·ñ¤', 'रु': 'L¤', 'रू': 'M¤', 'क्र': 'R¤', 'क्त': 'Q¤', 'क्क': 'P¤', 'प्र': 'Âý', 'त्र': '˜æ', 'ं': '´', 'े': 'ð' });
+        Object.assign(rev, { 'ि': 'ç', 'र्': 'ü', 'भ': 'Ö', 'भ्य': 'Ö÷Ø', '़': '¸', 'र': 'ÚU', 'क': '·¤', 'ट': 'ÅU', 'फ': 'È¤', 'के': '·Ô¤', 'कै': '·ñ¤', 'रु': 'L¤', 'रू': 'M¤', 'क्र': 'R¤', 'क्त': 'Q¤', 'क्क': 'P¤', 'प्र': 'Âý', 'त्र': '˜æ', 'ं': '´', 'े': 'ð', 'श': 'àæ', 'श्': 'à', 'क्': '·¤÷', 'ब्': '†', 'त्त': 'ˆÌ', 'त्त्': 'ˆˆ', 'ब्र': 'Õý', 'श्र': 'Ÿæ', 'च्': '‘', 'च्च्': '‘‘', 'च्च': '‘¿', 'क़': '·¤¸', 'ख़': '¹¸', 'ग़': '»¸', 'ज़': 'Á¸', 'ड़': 'Ç¸', 'ढ़': 'É¸', 'फ़': 'È¤¸', 'ज़्': 'Á¸÷' });
         Array.from('®vwxyz{|}~').forEach((v, i) => rev[String.fromCharCode(0x966 + i)] = v);
     }
     if (name === 'preeti')
-        Object.assign(rev, { 'ि': 'l', 'र्': '{', 'फ': 'km', 'झ': 'em', 'ऊ': 'pm', 'क्र': 's|', 'क्त': 'Qm', 'आ': 'cf', 'ओ': 'cf]', 'औ': 'cf}', 'ऐ': 'P]', 'ई': 'O{', 'क्ष': 'If', 'क्ष्': 'I', 'ण': '0f', 'ष': 'if', 'ो': 'f]', 'ौ': 'f}', 'प्र': 'k|' });
+        Object.assign(rev, { 'ि': 'l', 'र्': '{', 'फ': 'km', 'झ': '´', 'ह्म': 'x\\d', 'ह्न': 'x\\g', 'ऊ': 'pm', 'क्र': 's|', 'क्त': 'St', 'आ': 'cf', 'ओ': 'cf]', 'औ': 'cf}', 'ऐ': 'P]', 'ई': 'O{', 'क्ष': 'If', 'क्ष्': 'I', 'ण': '0f', 'ष': 'if', 'ो': 'f]', 'ौ': 'f}', 'प्र': 'k|', 'ब्र': 'a|', '-': '–' });
     return [name, trie(rev)];
 }));
 const isUnicode = (e) => e === 'unicode' || e === 'mangal';
 function decode(text, font) { if (isUnicode(font))
-    return text.normalize('NFC'); let result = replace(text, forward[font]); result = result.replace(new RegExp(`${I}(ं?)(${cluster})`, 'gu'), '$2ि$1'); result = result.replace(new RegExp(`(${cluster}${signs})${R}`, 'gu'), 'र्$1'); result = result.replaceAll(I, 'ि').replaceAll(R, 'र्'); if (font === 'preeti')
+    return text.normalize('NFC'); if (font === 'preeti')
+    text = text.replace(/[‘’]/g, "'").replace(/[“”]/g, '"'); let result = replace(text, forward[font]); result = result.replace(new RegExp(`${I}(ं?)(${cluster})`, 'gu'), '$2ि$1'); result = result.replace(new RegExp(`(${cluster}${signs})${R}`, 'gu'), 'र्$1'); result = result.replaceAll(I, 'ि').replaceAll(R, 'र्'); if (font === 'preeti')
     result = result.replace(/्ा/g, '').replace(/अाे/g, 'ओ').replace(/अाै/g, 'औ').replace(/अा/g, 'आ').replace(/एे/g, 'ऐ'); return result.replace(/ाे/g, 'ो').replace(/ाै/g, 'ौ').normalize('NFC'); }
 function encode(text, font) {
     if (isUnicode(font))

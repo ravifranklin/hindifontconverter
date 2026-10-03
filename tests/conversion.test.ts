@@ -1,3 +1,4 @@
+import {readFileSync} from 'node:fs';
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {convert,decode,encode,type Encoding} from '../lib/conversion/engine';
@@ -22,9 +23,9 @@ test('required smoke',()=>assert.equal(convert('Hkkjr','krutidev','unicode'),'�
 for(const r of routes)test(`${r.slug}: independent exact output`,()=>{const fixture={krutidev:'Hkkjr',devlys:'Hkkjr',preeti:'ef/t',unicode:'भारत',mangal:'भारत',chanakya:'ÖæÚUÌ'};assert.equal(convert(fixture[r.from],r.from,r.to),fixture[r.to]);});
 for(const r of routes)test(`${r.slug}: punctuation is preserved in literal spans`,()=>assert.equal(convert('[[(),.-? 123]]',r.from,r.to),'(),.-? 123'));
 test('Chanakya glyph carriers and corrected numeral semantics',()=>{assert.equal(decode('ÖæÚUÌ ·¤è ÖæáæÐ','chanakya'),'भारत की भाषा।');assert.equal(decode('®vwxyz{|}~','chanakya'),'०१२३४५६७८९');});
-test('Preeti extended probe corrections and unmapped symbols',()=>{assert.equal(decode('° Ì','preeti'),'ड्ढ त्र');assert.equal(decode('« ¤ ¥ © ÷ ‘','preeti'),'« ¤ ¥ © ÷ ‘');});
+test('Preeti extended probe corrections and unmapped symbols',()=>{assert.equal(decode('° Ì','preeti'),'ड्ढ त्र');assert.equal(decode('« ¤ ©','preeti'),'« ¤ ©');});
 test('Preeti reverse emits real legacy codes for sha and compound vowel signs',()=>{assert.equal(encode('भाषा को कौ प्रकार','preeti'),'efiff sf] sf} k|sf/');assert.equal(/[\u0900-\u097f]/.test(encode('भाषा को कौ प्रकार','preeti')),false);});
-test('longest-match and no replacement cascading',()=>{assert.equal(decode('[+k d+ Q+ M+','krutidev'),'ख़ क़ फ़ ड़');assert.equal(encode('क्क','krutidev'),'ô');});
+test('longest-match and no replacement cascading',()=>{assert.equal(decode('[+k d+ Q+ M+','krutidev'),'ख़ क़ फ़ ड़');assert.equal(encode('क्क','krutidev'),'Dd');});
 test('Nepali words and syllables',()=>{assert.equal(decode('g]kfnL efiff','preeti'),'नेपाली भाषा');assert.equal(decode('g]kfn /fd|f] 5.','preeti'),'नेपाल राम्रो छ।');assert.equal(decode('sf7df08"','preeti'),'काठमाण्डू');});
 test('nukta normalization',()=>assert.equal(decode(encode('क़ ख़ ग़ ज़ ड़ ढ़ फ़','krutidev'),'krutidev'),'क़ ख़ ग़ ज़ ड़ ढ़ फ़'));
 test('DevLys independently observed F differs from Kruti Dev half-tha',()=>{assert.equal(decode('F','devlys'),'थ');assert.equal(decode('F','krutidev'),'थ्');});
@@ -87,5 +88,124 @@ test('Preeti visible word-final halant: वाक् screenshot regression',()=>
  for(const [unicode,legacy] of [['वाक्','jfs\\'],['वाक् ','jfs\\ '],['वाक्।','jfs\\.'],['वाक्\nवाक्','jfs\\\njfs\\'],['क् त् म् र्','s\\ t\\ d\\ /\\'],['क़्','sÞ\\']]){
   assert.equal(encode(unicode,'preeti'),legacy);assert.equal(decode(legacy,'preeti'),unicode);
  }
- assert.equal(encode('वाक्य शक्ति','preeti'),'jfSo zlQm');
+ assert.equal(encode('वाक्य शक्ति','preeti'),'jfSo zlSt');
+});
+
+// The installed Kruti Dev 010 ô glyph is malformed; half-ka + ka renders क्क.
+test('Kruti Dev 010 kka: ढक्कन and related conjuncts',()=>{
+ for(const from of ['unicode','mangal'] as Encoding[]){
+  assert.equal(convert('ढक्कन',from,'krutidev'),'<Ddu');
+  assert.equal(convert('ढक्कन\nपक्का धक्का',from,'krutidev'),'<Ddu\niDdk /kDdk');
+ }
+ for(const text of ['ढक्कन','पक्का','धक्का','क्कि','क्की']){
+  assert.equal(decode(encode(text,'krutidev'),'krutidev'),text);
+ }
+ assert.equal(decode('ô','krutidev'),'क्क'); // Continue accepting older files.
+ assert.equal(convert('P¤','chanakya','krutidev'),'Dd');
+});
+
+// Kruti Dev 010's stacked ड्ड glyph collides with the long-u matra.
+// Use explicit ड + halant + ड so both letters and the matra remain readable.
+test('Kruti Dev 010 dda: लड्डू uses explicit readable conjunct',()=>{
+ for(const from of ['unicode','mangal'] as Encoding[]){
+  assert.equal(convert('लड्डू',from,'krutidev'),'yM~Mw');
+  assert.equal(convert('लड्डू\nलड्डू',from,'krutidev'),'yM~Mw\nyM~Mw');
+ }
+ for(const text of ['लड्डू','लड्डुओं','अड्डा','गड्ढा','ड्डि','ड्डी','ड्डु','ड्डू']){
+  assert.equal(decode(encode(text,'krutidev'),'krutidev'),text);
+ }
+ assert.equal(decode('ì Ï','krutidev'),'ड्ड ड्ड'); // Keep older files readable.
+});
+
+// Use full ba + rakar for ब्र; retain the proper compact ह्म ligature.
+test('Kruti Dev 010 bra: ब्रह्मांड uses ba plus rakar',()=>{
+ for(const from of ['unicode','mangal'] as Encoding[]){
+  assert.equal(convert('ब्रह्मांड',from,'krutidev'),'czãkaM');
+  assert.equal(convert('ब्रह्मांड\nब्रह्मा',from,'krutidev'),'czãkaM\nczãk');
+ }
+ for(const text of ['ब्रह्मांड','ब्रह्मा','ब्रह्म','ब्रह्मांडों','ह्मि','ह्मी','ह्मु']){
+  assert.equal(decode(encode(text,'krutidev'),'krutidev'),text);
+ }
+ assert.equal(decode('ã','krutidev'),'ह्म'); // Older documents still decode.
+});
+
+test('Kruti Dev bra conjunct and matras preserve the rakar form',()=>{
+ for(const [text,legacy] of [['ब्र','cz'],['ब्रज','czt'],['ब्रि','fcz'],['ब्री','czh'],['ब्रह्म','czã'],['ह्म','ã']]){
+  assert.equal(encode(text,'krutidev'),legacy);
+  assert.equal(decode(legacy,'krutidev'),text);
+ }
+});
+
+test('Preeti Hindi passage punctuation and bra use verified font glyphs',()=>{
+ for(const [text,legacy] of [['अलग-अलग','cnu–cnu'],['है;','x}Ù'],['माता-पिता','dftf–lktf'],['ब्र','a|'],['ब्रह्मांड','a|x\\df+8'],['ब्रि','la|'],['/','÷']]){
+  assert.equal(encode(text,'preeti'),legacy);assert.equal(decode(legacy,'preeti'),text);
+ }
+});
+test('Preeti u and uu preserve straight quote codes required by the font',()=>{
+ for(const [text,legacy] of [['गुलाब',"u'nfa"],['फूल','km"n'],['सुंदर',";'+b/"]]){
+  assert.equal(encode(text,'preeti'),legacy);assert.equal(decode(legacy,'preeti'),text);
+  const xml=new TextDecoder().decode(wordBytes(legacy,'preeti'));
+  assert.ok(xml.includes(legacy.replaceAll("'",'&apos;').replaceAll('"','&quot;')));
+ }
+});
+
+test('complete Hindi Preeti passage retains text, paragraphs, punctuation and reph',()=>{
+ const text=readFileSync(new URL('./fixtures/preeti-hindi-passage.txt',import.meta.url),'utf8').normalize('NFC');
+ assert.equal(decode(encode(text,'preeti'),'preeti'),text);
+ assert.equal(decode(encode('वर्षा शीर्षक','preeti'),'preeti'),'वर्षा शीर्षक');
+});
+
+test('Preeti passage: dedicated jha and explicit ha conjuncts remain readable',()=>{
+ const rows=[['झरने','´/g]'],['झूला','´"nf'],['झंडा','´+8f'],['झ़','´Þ'],['चिह्न','lrx\\g'],['ब्रह्मांड','a|x\\df+8'],['ह्मि','lx\\d'],['ह्नि','lx\\g']];
+ for(const [text,legacy] of rows){assert.equal(encode(text,'preeti'),legacy);assert.equal(decode(legacy,'preeti'),text);}
+ assert.equal(decode('em/g] lrXg a|Xdf+8','preeti'),'झरने चिह्न ब्रह्मांड');
+});
+
+test('Preeti visible dash: रंग-बिरंगे does not merge words or show a parenthesis',()=>{
+ for(const [text,legacy] of [['रंग-बिरंगे','/+u–la/+u]'],['अलग-अलग','cnu–cnu'],['रंग-बिरंगे\nमाता-पिता','/+u–la/+u]\ndftf–lktf']]){
+  assert.equal(encode(text,'preeti'),legacy);assert.equal(decode(legacy,'preeti'),text);
+ }
+ assert.equal(decode('/+u¥la/+u]','preeti'),'रंग-बिरंगे');
+ assert.equal(convert('[[-]]','unicode','preeti'),'-');
+});
+
+test('Preeti readable kta: नुक्ते, शक्ति and भक्त use half-ka plus ta',()=>{
+ for(const [text,legacy] of [['नुक्ते',"g'St]"],['शक्ति','zlSt'],['भक्त','eSt'],['क्त','St'],['क्ति','lSt']]){
+  assert.equal(encode(text,'preeti'),legacy);assert.equal(decode(legacy,'preeti'),text);
+ }
+ assert.equal(decode("g'Qm] zlQm eQm",'preeti'),'नुक्ते शक्ति भक्त');
+ assert.equal(encode('नुक्ते\nशक्ति','preeti'),"g'St]\nzlSt");
+});
+
+test('Chanakya installed-font regressions: sha, conjuncts and nukta placement',()=>{
+ for(const [text,legacy] of [['श','àæ'],['शब्द','àæ†Î'],['कुत्ता','·¤éˆÌæ'],['बच्चे','Õ‘¿ð'],['बच्चों','Õ‘¿ô´'],['स्वच्छ','Sß‘À'],['क़लम','·¤¸Ü×'],['फ़सल','È¤¸âÜ'],['ब्र','Õý']]){
+  assert.equal(encode(text,'chanakya'),legacy);assert.equal(decode(legacy,'chanakya'),text);
+ }
+ assert.equal(decode('o','chanakya'),'श्र');
+});
+test('full Chanakya Hindi passage retains all words and uses supported font codes',()=>{
+ const source=readFileSync(new URL('./fixtures/chanakya-hindi-passage.txt',import.meta.url),'utf8').normalize('NFC');
+ const supported=new Set(JSON.parse(readFileSync(new URL('./fixtures/chanakya-supported-codepoints.json',import.meta.url),'utf8')) as number[]);
+ const output=encode(source,'chanakya');assert.equal(decode(output,'chanakya'),source);
+ for(const ch of output)if(!/\s/.test(ch))assert.ok(supported.has(ch.codePointAt(0)!),`Unsupported Chanakya font code ${ch.codePointAt(0)!.toString(16)}`);
+ assert.equal(/[Žž€'"]/.test(output),false);
+});
+
+test('Preeti children conjunct remains joined',()=>{assert.equal(encode('बच्चों','preeti'),'aRrf]+');assert.equal(decode('aRrf]+','preeti'),'बच्चों');});
+
+test('Chanakya half-ba joins across words and lines',()=>{const s='शब्द शब्दों\nशब्दावली उपलब्ध';assert.equal(decode(encode(s,'chanakya'),'chanakya'),s);assert.equal(encode('ब्','chanakya'),'†');});
+
+test('Chanakya bhya uses explicit correct consonants instead of distorted ya ligature',()=>{assert.equal(encode('अभ्यास','chanakya'),'¥Ö÷Øæâ');for(const s of ['अभ्यास','अभ्यासों\nअभ्यर्थी'])assert.equal(decode(encode(s,'chanakya'),'chanakya'),s);assert.equal(encode('अभ्यास','preeti'),'cEof;');});
+
+test('Preeti recovers typographer quotes in reverse conversion',()=>{
+ assert.equal(decode('s‘ s’ s“ s”','preeti'),'कु कु कू कू');
+ assert.equal(decode('jiff{','preeti'),'वर्षा');
+ const source='रंग-बिरंगे नुक्ते; ब्र वर्षा\nकु कू';
+ const raw=encode(source,'preeti');
+ assert.equal(decode(raw.replaceAll("'",'’').replaceAll('"','”'),'preeti'),source);
+});
+
+test('DevLys installed-font sha and bra glyphs',()=>{
+ for(const [s,raw] of [['शब्द','’kCn'],['शक्ति','’kfä'],['ब्र','cz'],['ब्रह्मांड','czãkaM']]){assert.equal(encode(s,'devlys'),raw);assert.equal(decode(raw,'devlys'),s);}
+ assert.equal(decode('’k','devlys'),'श');
 });
