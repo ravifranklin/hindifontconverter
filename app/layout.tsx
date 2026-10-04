@@ -1,13 +1,11 @@
 import type { Metadata } from "next";
+import { SITE_ORIGIN, pageMetadata } from "@/lib/seo";
 import "./globals.css";
 import WebTools from '@/components/web-tools';
 
 export const metadata: Metadata = {
-  title: "Akshar — Hindi & Nepali Font Converter",
-  description: "Private, browser-based conversion for Kruti Dev, DevLys, Chanakya and Preeti.",
-  other: {
-    "codex-preview": "development",
-  },
+  metadataBase: new URL(SITE_ORIGIN),
+  ...pageMetadata("home"),
   icons: {
     icon: "/favicon.svg",
     shortcut: "/favicon.svg",
@@ -21,7 +19,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="antialiased"><WebTools/>{children}</body>
+      <body className="antialiased"><WebTools/><script type="application/ld+json" dangerouslySetInnerHTML={{__html: JSON.stringify({"@context":"https://schema.org","@type":"WebSite",name:"Akshar",url:SITE_ORIGIN+"/"})}}/>{children}</body>
     </html>
   );
 }
