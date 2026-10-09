@@ -27,7 +27,41 @@ The workspace was empty. TypeScript, React and the supplied Vinext/Vite starter 
 
 ## Configuration
 
-Copy `.env.example` to `.env` for local configuration. Set `CONTACT_WEBHOOK_URL` to an HTTPS endpoint under your control and `CONTACT_WEBHOOK_TOKEN` to its bearer token. In hosted Sites, set these as server environment values/secrets. The endpoint receives JSON `{ name, email, message }` and must return a 2xx response only when it accepts delivery. Configure the recipient at that endpoint. This site never reports success when delivery is unconfigured, times out or returns failure. Honeypot, elapsed-time, same-origin, bounded field validation and a simple challenge reject basic spam; the delivery service should enforce its own rate limit.
+Contact delivery uses the existing form and `/api/contact`, Cloudflare Turnstile, and the Resend HTTPS API. No email SDK or database is needed.
+
+### Contact configuration
+
+- `RESEND_API_KEY`: private Cloudflare Worker secret. Never expose through public variables, browser responses or logs.
+- `TURNSTILE_SECRET_KEY`: private Cloudflare Worker secret, used only for Siteverify.
+- `CONTACT_RECIPIENT_EMAIL`: server-side destination inbox; a single email address.
+- `NEXT_PUBLIC_TURNSTILE_SITE_KEY`: public key of a **Managed** Turnstile widget. Create the widget for `krutidevunicodefontconverter.com` when setting up production.
+- `CONTACT_RATE_LIMITER`: required Cloudflare Workers Rate Limiting object binding. It cannot be supplied as a string environment variable.
+
+Private secrets are read at request time through server-side `process.env` with the existing `nodejs_compat` flag and compatibility date. The rate limiter is read from `cloudflare:workers`. GET `/api/contact` exposes only configuration availability and the public site key; no private keys or recipient. Sending stays disabled if any key, recipient or binding is missing. The public key is delivered through this configuration endpoint, avoiding a mismatch between a build-time key and runtime configuration.
+
+The release source `localBindingConfig` in `vite.config.ts` declares the existing production binding below, targets Worker `hindifontconverter`, and preserves dashboard variables with `keep_vars: true`. Production and preview workers.dev access remain enabled. Custom domains stay dashboard-managed: no routes are declared. Compatibility remains `2026-05-15` with `nodejs_compat`. No deployment or live configuration change has been performed. Do not edit generated `dist/server/wrangler.json` as a permanent configuration source.
+
+```jsonc
+{
+  "ratelimits": [{
+    "name": "CONTACT_RATE_LIMITER",
+    "namespace_id": "1",
+    "simple": { "limit": 5, "period": 60 }
+  }]
+}
+```
+
+This allows roughly five Contact attempts per minute per `CF-Connecting-IP`. Rejected and malformed attempts also consume the limit; rate limiting happens before either external provider is called. Limit exhaustion returns 429 with `Retry-After: 60`. An unavailable binding, failed limiter or missing/invalid Cloudflare IP header fails closed. No application in-memory fallback is used. These Cloudflare-backed counters are local to each Cloudflare location and eventually consistent, so they are abuse protection rather than a strict global/email quota. People sharing an IP share the allowance. No D1, KV or Durable Object is required. [Cloudflare rate-limit binding documentation](https://developers.cloudflare.com/workers/runtime-apis/bindings/rate-limit/).
+
+Every submitted `cf-turnstile-response` token is checked against `https://challenges.cloudflare.com/turnstile/v0/siteverify`, with the trusted Cloudflare IP. Email sending requires `success: true`, hostname exactly `krutidevunicodefontconverter.com`, and action `contact`. Siteverify enforces token expiration after five minutes and single use; invalid, expired and reused tokens never reach Resend. No verification success is cached. The browser clears tokens on expiry/error and resets the widget after each attempted submission, including Resend/network failures; a load error offers a retry button. Existing fields and styling remain, with the Managed widget above the send/copy buttons. [Turnstile verification documentation](https://developers.cloudflare.com/turnstile/get-started/server-side-validation/).
+
+Verify `krutidevunicodefontconverter.com` in Resend before sending from `Akshar Contact <contact@krutidevunicodefontconverter.com>`. Emails preserve plain-text name, email and message, the fixed server-side recipient, and the visitor's email as Reply-To. Success means Resend accepted the email, not guaranteed inbox delivery. Provider failures/timeouts produce generic messages without private data. Existing bounded field/email/request validation, same-origin checks, honeypot and exact arithmetic answer remain; client timestamps are ignored.
+
+### Local testing
+
+Use placeholders only, copied from `.env.example` into an ignored local `.dev.vars` file as appropriate. No real keys are needed for `node --loader ./scripts/test-loader.mjs --test tests/contact.test.ts`: the test-only loader supplies mock Worker bindings, while Siteverify and Resend calls are mocked. The fixtures contain only placeholder keys/tokens and reserved example IPs. Do not import test fixtures into production. Tests exercise rejection of expired/reused tokens via official Siteverify error responses and rate-limit outcomes, without making real API calls.
+
+A live local form will remain disabled until a local Worker rate-limit binding and keys are configured. The strict production hostname/action check is intentional and has no localhost bypass. Full production-domain integration testing needs separately authorized setup; do not put real secrets into the example or tests.
 
 ## Routes
 

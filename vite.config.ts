@@ -14,6 +14,17 @@ const isCodexSeatbeltSandbox = process.env.CODEX_SANDBOX === "seatbelt";
 const managedLinux = readExecutionProfile() === "managed-linux";
 
 const localBindingConfig = {
+  name: "hindifontconverter",
+  compatibility_date: "2026-05-15",
+  keep_vars: true,
+  workers_dev: true,
+  preview_urls: true,
+  // Custom domains remain dashboard-managed; do not declare or replace routes.
+  ratelimits: [{
+    name: "CONTACT_RATE_LIMITER",
+    namespace_id: "1",
+    simple: { limit: 5, period: 60 as const },
+  }],
   main: "vinext/server/fetch-handler",
   compatibility_flags: ["nodejs_compat"],
   d1_databases: d1
