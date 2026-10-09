@@ -6,7 +6,6 @@ export function KeyboardGuide(){return <><p>Remington keys produce legacy codes.
 function shiftKey(key:string){const a="1234567890-=[];',./",b='!@#$%^&*()_+{}:"<>?';const i=a.indexOf(key);return i<0?key.toUpperCase():b[i];}
 function displayKey(k:string){const v=decode(k,'krutidev');return /^[\u093a-\u094f\u0900-\u0903]/.test(v)?'◌'+v:v;}
 type TurnstileApi = {
-  ready(callback: () => void): void;
   render(container: HTMLElement, options: {
     sitekey: string; action: string; theme: string; size: string; 'response-field': boolean;
     callback(token: string): void; 'expired-callback'(): void; 'error-callback'(): boolean;
@@ -19,6 +18,7 @@ declare global { interface Window { turnstile?: TurnstileApi } }
 function Contact() {
   const [state,setState]=useState('');
   const [busy,setBusy]=useState(false);
+  const [formValid,setFormValid]=useState(false);
   const [availability,setAvailability]=useState<'loading'|'ready'|'unavailable'|'failed'>('loading');
   const [siteKey,setSiteKey]=useState('');
   const [token,setToken]=useState('');
@@ -50,18 +50,16 @@ function Contact() {
       if(active){setToken('');setSecurityError(true);}
     };
     const render=()=>{
-      if(!active || !window.turnstile || !container.current)return;
-      window.turnstile.ready(()=>{
-        if(!active || !container.current || !window.turnstile)return;
-        try{
-          widget.current=window.turnstile.render(container.current,{
-            sitekey:siteKey,action:'contact',theme:'light',size:'flexible','response-field':false,
-            callback:value=>{if(active){setToken(value);setSecurityError(false);}},
-            'expired-callback':()=>{if(active){setToken('');setState('Security check expired. Complete a new check before sending.');}},
-            'error-callback':()=>{fail();return true;},
-          });
-        }catch{fail();}
-      });
+      if(!active || widget.current!==null)return;
+      if(!window.turnstile || !container.current){fail();return;}
+      try{
+        widget.current=window.turnstile.render(container.current,{
+          sitekey:siteKey,action:'contact',theme:'light',size:'flexible','response-field':false,
+          callback:value=>{if(active){setToken(value);setSecurityError(false);}},
+          'expired-callback':()=>{if(active){setToken('');setState('Security check expired. Complete a new check before sending.');}},
+          'error-callback':()=>{fail();return true;},
+        });
+      }catch{fail();}
     };
     let script=document.querySelector<HTMLScriptElement>('script[data-akshar-turnstile]');
     if(script?.dataset.failed==='true'){script.remove();script=null;}
@@ -71,13 +69,13 @@ function Contact() {
         script=document.createElement('script');
         script.src='https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit';
         script.async=true;script.dataset.aksharTurnstile='true';
-        document.head.appendChild(script);
       }
       script.addEventListener('load',render);
       script.addEventListener('error',fail);
     }
     const markFailed=()=>{if(script)script.dataset.failed='true';};
     script?.addEventListener('error',markFailed);
+    if(script&&!script.isConnected)document.head.appendChild(script);
     return()=>{
       active=false;
       script?.removeEventListener('load',render);
@@ -99,7 +97,7 @@ function Contact() {
 
   return <><p>Report a conversion issue or ask about the site. For a mapping issue, include a short, non-sensitive example, its original font and the expected text.</p>
     {availability!=='ready'&&<p className="notice">{availability==='loading'?'Checking contact email and security availability…':availability==='failed'?'Unable to check contact availability. Please reload and try again.':'Contact email or spam protection is not configured. Your message will not be sent or saved. You can still prepare it below and copy it for the site operator.'}</p>}
-    <form className="contact-form" onSubmit={async e=>{
+    <form className="contact-form" onInput={e=>setFormValid(e.currentTarget.checkValidity())} onSubmit={async e=>{
       e.preventDefault();
       if(sending.current||availability!=='ready'||!token)return;
       sending.current=true;setBusy(true);
@@ -121,7 +119,7 @@ function Contact() {
       {availability==='ready'&&!token&&!securityError&&<p className="fine">Complete the security check to enable sending.</p>}
       {securityError&&<p className="notice">The security check could not load. <button type="button" className="secondary" disabled={busy} onClick={()=>{setSecurityError(false);setToken('');setSecurityAttempt(value=>value+1);}}>Retry security check</button></p>}
       <div className="form-actions">
-        <button className="primary" disabled={busy||availability!=='ready'||!token}>{busy?'Sending…':'Send message'}</button>
+        <button className="primary" disabled={busy||availability!=='ready'||!token||!formValid}>{busy?'Sending…':'Send message'}</button>
         <button type="button" className="secondary" onClick={async()=>{
           const text=(document.getElementById('message') as HTMLTextAreaElement).value;
           try{await navigator.clipboard.writeText(text);setState('Message copied. Nothing was sent.');}
