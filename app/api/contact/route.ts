@@ -132,7 +132,7 @@ export async function POST(request: Request) {
   }
   try {
     const verification = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
-      method: 'POST', redirect: 'error',
+      method: 'POST', redirect: 'manual',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ secret: config.turnstileSecret, response: token, remoteip }),
       signal: AbortSignal.timeout(10000),
@@ -154,7 +154,7 @@ export async function POST(request: Request) {
   try {
     const response = await fetch('https://api.resend.com/emails', {
       method: 'POST',
-      redirect: 'error',
+      redirect: 'manual',
       headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${config.apiKey}` },
       body: JSON.stringify({
         from: 'Akshar Contact <contact@krutidevunicodefontconverter.com>',

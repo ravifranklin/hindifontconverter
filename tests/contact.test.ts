@@ -174,12 +174,12 @@ test('sends the exact Resend payload with fixed sender/recipient and no timestam
   assert.equal(calls.length, 2);
   assert.equal(calls[0].url, siteverifyUrl);
   assert.deepEqual(JSON.parse(calls[0].init.body as string), { secret, response: 'test-token', remoteip: '192.0.2.1' });
-  assert.equal(calls[0].init.redirect, 'error');
+  assert.equal(calls[0].init.redirect, 'manual');
   assert.ok(calls[0].init.signal instanceof AbortSignal);
   const { url, init } = calls[1];
   assert.equal(url, 'https://api.resend.com/emails');
   assert.equal(init.method, 'POST');
-  assert.equal(init.redirect, 'error');
+  assert.equal(init.redirect, 'manual');
   assert.deepEqual(init.headers, { 'Content-Type': 'application/json', Authorization: 'Bearer ' + apiKey });
   assert.ok(init.signal instanceof AbortSignal);
   assert.deepEqual(JSON.parse(init.body as string), {
@@ -189,6 +189,55 @@ test('sends the exact Resend payload with fixed sender/recipient and no timestam
   });
   // The browser timestamp is neither required nor trusted.
   assert.equal((await POST(request(valid))).status, 200);
+});
+
+test('both provider request configurations are accepted by the Cloudflare runtime', async () => {
+  assert.equal((await POST(request())).status, 200);
+  assert.equal(calls.length, 2);
+  // Use the actual endpoint options, with only dummy credentials. Construct
+  // requests inside workerd rather than Node, which accepts unsupported modes.
+  const configs = calls.map(({ url, init }) => ({ url, init: { ...init, signal: undefined } }));
+  const { Miniflare } = await import('miniflare');
+  const runtime = new Miniflare({
+    modules: true, compatibilityDate: '2026-05-15', compatibilityFlags: ['nodejs_compat'],
+    script: `export default { async fetch(input) {
+      const configs = await input.json();
+      return Response.json(configs.map(({url, init}) => {
+        const request = new Request(url, {...init, signal: AbortSignal.timeout(10000)});
+        return {method: request.method, redirect: request.redirect};
+      }));
+    } }`,
+  });
+  try {
+    const response = await runtime.dispatchFetch('http://localhost/runtime-check', {
+      method: 'POST', body: JSON.stringify(configs),
+    });
+    assert.equal(response.status, 200);
+    assert.deepEqual(await response.json(), [
+      { method: 'POST', redirect: 'manual' }, { method: 'POST', redirect: 'manual' },
+    ]);
+  } finally {
+    await runtime.dispose();
+  }
+});
+
+test('Siteverify and Resend redirects are rejected without following or disclosing them', async () => {
+  for (const provider of [siteverifyUrl, 'https://api.resend.com/emails']) {
+    for (const status of [301, 302, 303, 307, 308]) {
+      calls = [];
+      globalThis.fetch = async (url, init) => {
+        const target = String(url);
+        calls.push({ url: target, init: init! });
+        assert.equal(init?.redirect, 'manual');
+        assert.ok(target === siteverifyUrl || target === 'https://api.resend.com/emails');
+        return target === provider
+          ? new Response('provider-private-detail', { status, headers: { Location: 'https://redirect.example/provider-private-detail' } })
+          : Response.json(verified);
+      };
+      await assertSafeFailure(await POST(request()));
+      assert.equal(calls.length, provider === siteverifyUrl ? 1 : 2);
+    }
+  }
 });
 
 test('provider rejection, throttling, errors, timeout and unconfirmed responses never report success or leak data', async () => {
