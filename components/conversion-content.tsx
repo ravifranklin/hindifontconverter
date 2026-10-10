@@ -27,7 +27,613 @@ const home: ConversionContent = {
   ],
   links: [ { href: '/unicode-to-krutidev', text: 'Convert Unicode back to Kruti Dev' }, { href: '/krutidev-to-mangal', text: 'Use Kruti Dev text with Mangal' }, { href: '/keyboard', text: 'Check the Remington keyboard guide' }, { href: '/font-krutidev', text: 'Read the Kruti Dev 010 font guide' } ],
 };
+const secondaryContent: Record<string, ConversionContent> = {
+  "devlys-to-unicode": {
+    "h1": "DevLys 010 to Unicode Hindi Converter",
+    "intro": "Paste codes from a DevLys 010 document to get readable Unicode Hindi. Check the original font name before converting; DevLys variants may use different codes.",
+    "howTitle": "Read DevLys 010 codes as Unicode Hindi",
+    "steps": [
+      {
+        "title": "Confirm DevLys 010",
+        "text": "Select a few words in the original document and check its font. Paste the copied legacy codes into the source editor."
+      },
+      {
+        "title": "Review the Hindi result",
+        "text": "Use automatic conversion or Convert to Unicode. Compare matras, half letters and punctuation with the original."
+      },
+      {
+        "title": "Copy readable Hindi",
+        "text": "Copy the Unicode result into a message or document, or download a Word file. Keep the original for proofreading."
+      }
+    ],
+    "exampleTitle": "DevLys 010 example: Hkkjr to भारत",
+    "input": "Hkkjr",
+    "output": "भारत",
+    "outputHindi": true,
+    "explanation": "DevLys 010 and Kruti Dev can share some codes without sharing every mapping. For example, F converts to थ with DevLys 010 but थ् with Kruti Dev. Choose the source font rather than guessing from one word.",
+    "hindi": "DevLys 010 के कोड पहले बॉक्स में पेस्ट करें। यूनिकोड हिंदी को मूल दस्तावेज़ से मिलाकर जाँचें।",
+    "faqTitle": "Checking a DevLys source document",
+    "faqs": [
+      {
+        "question": "Can I use the Kruti Dev converter for DevLys 010?",
+        "answer": "Use the DevLys direction when the source font is DevLys 010. Similar-looking codes can decode differently, especially half letters."
+      },
+      {
+        "question": "Does this cover every DevLys font variant?",
+        "answer": "This converter targets DevLys 010. Check a short passage before converting a document made with another variant."
+      },
+      {
+        "question": "What if copied PDF text produces incorrect Hindi?",
+        "answer": "Compare it with the original document and check its font. PDF extraction can reorder or omit characters; this text converter cannot recover missing glyphs or read a scan."
+      }
+    ],
+    "links": [
+      {
+        "href": "/unicode-to-devlys",
+        "text": "Convert Unicode back to DevLys 010"
+      },
+      {
+        "href": "/devlys-to-mangal",
+        "text": "Use DevLys text with Mangal"
+      },
+      {
+        "href": "/fonts",
+        "text": "Identify DevLys 010 and other Hindi fonts"
+      }
+    ]
+  },
+  "unicode-to-devlys": {
+    "h1": "Unicode Hindi to DevLys 010 Converter",
+    "intro": "Convert readable Unicode Hindi to DevLys 010 legacy codes for a document that requires that font. Apply a licensed DevLys 010 font to the result in your destination document.",
+    "howTitle": "Prepare Unicode Hindi for DevLys 010",
+    "steps": [
+      {
+        "title": "Paste Unicode letters",
+        "text": "Use readable Hindi from a website, message or Unicode document. Do not paste English-looking legacy codes as Unicode input."
+      },
+      {
+        "title": "Convert to DevLys codes",
+        "text": "भारत becomes Hkkjr. Review the raw result without expecting the browser to display DevLys glyphs."
+      },
+      {
+        "title": "Apply DevLys 010 in Word",
+        "text": "Copy the output into Word, select it and choose your licensed DevLys 010 font. Proofread the displayed Hindi; the Word download does not embed the font."
+      }
+    ],
+    "exampleTitle": "Unicode to DevLys 010: भारत to Hkkjr",
+    "input": "भारत",
+    "output": "Hkkjr",
+    "inputHindi": true,
+    "explanation": "The output is still Hindi content, stored as legacy codes. Keep a Unicode copy for searching and sharing. A recipient needs the matching font to display those codes.",
+    "faqTitle": "Using DevLys 010 output",
+    "faqs": [
+      {
+        "question": "Why does the result look like English letters?",
+        "answer": "The editor displays stored DevLys codes. Apply DevLys 010 in a document to display Hindi; changing the browser font is not part of this tool."
+      },
+      {
+        "question": "Can smart quotes change the result?",
+        "answer": "Yes. DevLys 010 uses a straight double quote for ष. Disable typographer’s quote replacement and automatic hyphenation when importing legacy text into InDesign; re-paste fresh output if characters changed."
+      },
+      {
+        "question": "Does Download Word install DevLys 010?",
+        "answer": "No. It creates a document with the output font selected, but does not install or embed a font. Obtain a licensed copy for the device where the document will be used."
+      }
+    ],
+    "links": [
+      {
+        "href": "/devlys-to-unicode",
+        "text": "Read DevLys 010 as Unicode"
+      },
+      {
+        "href": "/mangal-to-devlys",
+        "text": "Convert Hindi copied from Mangal"
+      },
+      {
+        "href": "/fonts",
+        "text": "Read DevLys font and licensing guidance"
+      }
+    ]
+  },
+  "devlys-to-mangal": {
+    "h1": "DevLys 010 to Mangal Unicode Converter",
+    "intro": "Convert DevLys 010 codes to Unicode Hindi for a Mangal-formatted document. Mangal displays Unicode letters; it does not have a separate legacy encoding.",
+    "howTitle": "Move DevLys text into a Mangal document",
+    "steps": [
+      {
+        "title": "Copy DevLys 010 text",
+        "text": "Check the original document’s font, then paste its legacy codes into the source editor."
+      },
+      {
+        "title": "Check the Unicode letters",
+        "text": "Convert to Mangal and compare the readable Hindi with the source. Pay attention to half letters and text extracted from PDFs."
+      },
+      {
+        "title": "Choose Mangal in Word",
+        "text": "Copy the result into Word and select Mangal for that text. Download Word also selects Mangal; it must be available on your device."
+      }
+    ],
+    "exampleTitle": "DevLys codes to Hindi displayed with Mangal",
+    "input": "Hkkjr",
+    "output": "भारत",
+    "outputHindi": true,
+    "explanation": "DevLys to Mangal produces the same Unicode letters as DevLys to Unicode. Selecting Mangal changes their appearance. If Mangal is unavailable, another Unicode Devanagari font can display the result.",
+    "hindi": "DevLys के कोड को पहले यूनिकोड में बदलें। फिर Word में परिणाम पेस्ट करके Mangal फ़ॉन्ट चुनें।",
+    "faqTitle": "Mangal display after DevLys conversion",
+    "faqs": [
+      {
+        "question": "Can I select Mangal without converting DevLys codes?",
+        "answer": "No. Convert the legacy codes to Unicode first, then apply Mangal. A font-menu change alone does not rewrite the stored codes."
+      },
+      {
+        "question": "Why does the browser display a different style from Word?",
+        "answer": "Mangal may not be installed on your device, so the browser can use a fallback. The Unicode letters remain the same."
+      },
+      {
+        "question": "What if the original font is another DevLys variant?",
+        "answer": "This mapping targets DevLys 010. Test and compare a short passage; do not assume every variant has identical character codes."
+      }
+    ],
+    "links": [
+      {
+        "href": "/mangal-to-devlys",
+        "text": "Return Mangal Hindi to DevLys 010"
+      },
+      {
+        "href": "/devlys-to-unicode",
+        "text": "Use the general DevLys to Unicode tool"
+      },
+      {
+        "href": "/fonts",
+        "text": "Compare Mangal and legacy fonts"
+      }
+    ]
+  },
+  "mangal-to-devlys": {
+    "h1": "Mangal Hindi to DevLys 010 Converter",
+    "intro": "Copy Unicode Hindi from a Mangal-formatted document to produce DevLys 010 codes. The output needs a licensed DevLys 010 font in the destination document.",
+    "howTitle": "Copy Mangal Hindi into a DevLys workflow",
+    "steps": [
+      {
+        "title": "Copy readable Hindi",
+        "text": "Select text in the Mangal document and paste it here. Mangal uses Unicode, so the source should contain Hindi letters."
+      },
+      {
+        "title": "Convert to legacy codes",
+        "text": "Automatic conversion or Convert to DevLys produces the raw codes. भारत becomes Hkkjr."
+      },
+      {
+        "title": "Set the destination font",
+        "text": "Paste the codes into Word and choose DevLys 010. Compare with the original Mangal document and keep the Unicode copy."
+      }
+    ],
+    "exampleTitle": "Mangal Unicode input to DevLys 010 codes",
+    "input": "भारत",
+    "output": "Hkkjr",
+    "inputHindi": true,
+    "explanation": "This converts Unicode text, not the appearance or layout of a Mangal document. A Word download creates a new document with the output font selected; it does not preserve tables or embed DevLys.",
+    "faqTitle": "Preparing a DevLys document from Mangal",
+    "faqs": [
+      {
+        "question": "What if copied source text already looks like Hkkjr?",
+        "answer": "Check the source font. Raw legacy codes should use the matching legacy-to-Unicode converter, rather than this Unicode input direction."
+      },
+      {
+        "question": "Will my Mangal document’s formatting be preserved?",
+        "answer": "Only pasted text is converted. Copy the output into your destination layout; tables, images and page formatting are not imported."
+      },
+      {
+        "question": "Why are some characters wrong after pasting?",
+        "answer": "Confirm DevLys 010 is selected and that quote replacement has not changed the codes. Review the result against the original; other DevLys variants may differ."
+      }
+    ],
+    "links": [
+      {
+        "href": "/devlys-to-mangal",
+        "text": "Read DevLys text with Mangal"
+      },
+      {
+        "href": "/unicode-to-devlys",
+        "text": "Use Unicode to DevLys 010"
+      },
+      {
+        "href": "/fonts",
+        "text": "Identify and install the appropriate font"
+      }
+    ]
+  },
+  "chanakya-to-unicode": {
+    "h1": "Chanakya to Unicode Hindi Converter",
+    "intro": "Paste legacy Chanakya text from a Hindi publishing document to get Unicode Hindi. Identify the original font and review extracted text before using the result.",
+    "howTitle": "Convert a Chanakya passage to Unicode",
+    "steps": [
+      {
+        "title": "Check the publishing font",
+        "text": "Confirm Chanakya in the original document, then paste a short selection of its stored codes."
+      },
+      {
+        "title": "Review letters and marks",
+        "text": "Convert to Unicode and compare the Hindi with the original, including matras, conjuncts and punctuation."
+      },
+      {
+        "title": "Use Unicode text",
+        "text": "Copy the result for a Unicode document or message, or download a Word file. Rebuild layout separately if the source was a publishing file."
+      }
+    ],
+    "exampleTitle": "Chanakya codes: ÖæÚUÌ becomes भारत",
+    "input": "ÖæÚUÌ",
+    "output": "भारत",
+    "outputHindi": true,
+    "explanation": "Chanakya codes include Latin and extended characters. They need conversion before use as Unicode Hindi. Text copied from a PDF may have extraction errors that changing an encoding cannot repair.",
+    "faqTitle": "Troubleshooting Chanakya source text",
+    "faqs": [
+      {
+        "question": "Can this import a publishing file or scanned page?",
+        "answer": "No. Paste extracted text into the editor. It does not import page layout, perform OCR or recover letters omitted during extraction."
+      },
+      {
+        "question": "Why are some copied words still incorrect?",
+        "answer": "Confirm the source is the supported Chanakya mapping, compare a short passage and check for missing or reordered PDF characters."
+      },
+      {
+        "question": "Will converting back restore exactly the same codes?",
+        "answer": "Not necessarily. Different legacy sequences can represent the same Hindi letters. Keep your original file if exact source codes matter."
+      }
+    ],
+    "links": [
+      {
+        "href": "/unicode-to-chanakya",
+        "text": "Convert Unicode back to Chanakya"
+      },
+      {
+        "href": "/chanakya-to-krutidev",
+        "text": "Move Chanakya text to Kruti Dev"
+      },
+      {
+        "href": "/font-chanakya",
+        "text": "Read Chanakya installation and licensing guidance"
+      }
+    ]
+  },
+  "unicode-to-chanakya": {
+    "h1": "Unicode Hindi to Chanakya Converter",
+    "intro": "Convert readable Unicode Hindi to the supported Chanakya legacy codes. Apply a licensed Chanakya font in the destination document and compare the display with your Unicode original.",
+    "howTitle": "Prepare Unicode Hindi for Chanakya",
+    "steps": [
+      {
+        "title": "Paste readable Unicode Hindi",
+        "text": "Copy Hindi from a Unicode document or website. Keep a copy of the original text for proofreading."
+      },
+      {
+        "title": "Generate Chanakya codes",
+        "text": "Use automatic conversion or Convert to Chanakya. भारत becomes ÖæÚUÌ in the raw result editor."
+      },
+      {
+        "title": "Apply the matching Chanakya font",
+        "text": "Paste the codes into the destination document, select Chanakya and check the display. Download Word does not install or embed fonts."
+      }
+    ],
+    "exampleTitle": "Unicode Hindi to Chanakya: भारत to ÖæÚUÌ",
+    "input": "भारत",
+    "output": "ÖæÚUÌ",
+    "inputHindi": true,
+    "explanation": "Extended characters in the result are part of the legacy encoding. They do not become searchable Unicode Hindi merely by applying the font. Retain the Unicode source for web use.",
+    "faqTitle": "Working with converted Chanakya codes",
+    "faqs": [
+      {
+        "question": "Are ÖæÚUÌ characters a conversion failure?",
+        "answer": "They are the verified codes for भारत in this Chanakya mapping. Apply the matching licensed font to display the Hindi glyphs."
+      },
+      {
+        "question": "Can I share these codes as ordinary Hindi in email?",
+        "answer": "Use Unicode Hindi for email and messages. Chanakya codes need the matching font in the recipient’s application."
+      },
+      {
+        "question": "Will this recreate my original page design?",
+        "answer": "No. It converts text only. Paste the output into your own layout and proofread it with the appropriate font."
+      }
+    ],
+    "links": [
+      {
+        "href": "/chanakya-to-unicode",
+        "text": "Read Chanakya codes as Unicode"
+      },
+      {
+        "href": "/krutidev-to-chanakya",
+        "text": "Convert an existing Kruti Dev document"
+      },
+      {
+        "href": "/font-chanakya",
+        "text": "Install a licensed Chanakya font"
+      }
+    ]
+  },
+  "krutidev-to-chanakya": {
+    "h1": "Kruti Dev 010 to Chanakya Hindi Converter",
+    "intro": "Convert Kruti Dev 010 legacy codes to Chanakya codes for a Hindi publishing workflow. Both editors show stored codes; apply Chanakya in the destination document to check the Hindi display.",
+    "howTitle": "Move Kruti Dev text to Chanakya",
+    "steps": [
+      {
+        "title": "Confirm Kruti Dev 010 input",
+        "text": "Copy text from the Kruti Dev document and paste its stored codes. Hkkjr is a verified input."
+      },
+      {
+        "title": "Convert between legacy encodings",
+        "text": "Convert to Chanakya; Hkkjr becomes ÖæÚUÌ. The result is Chanakya codes, rather than readable Unicode output."
+      },
+      {
+        "title": "Review with Chanakya selected",
+        "text": "Paste the result into your destination document and apply a licensed Chanakya font. Compare its Hindi display with the original Kruti Dev document."
+      }
+    ],
+    "exampleTitle": "Kruti Dev Hkkjr to Chanakya ÖæÚUÌ",
+    "input": "Hkkjr",
+    "output": "ÖæÚUÌ",
+    "explanation": "The two fonts use different legacy mappings. Changing Kruti Dev to Chanakya in a font menu alone does not convert the codes. Use Unicode output instead when the destination is a website or message.",
+    "faqTitle": "Checking Kruti Dev to Chanakya output",
+    "faqs": [
+      {
+        "question": "Why do both boxes show Latin-looking characters?",
+        "answer": "Both directions use legacy encodings. The source needs Kruti Dev 010 for display, while the result needs the supported Chanakya font."
+      },
+      {
+        "question": "What if my source already contains readable Hindi?",
+        "answer": "Use Unicode to Chanakya for readable Unicode input. This page expects Kruti Dev 010 codes."
+      },
+      {
+        "question": "Will mixed English text stay unchanged?",
+        "answer": "Wrap literal English text in double brackets, such as [[Invoice 123]]. The converter preserves the enclosed text and removes the brackets; review the resulting document."
+      }
+    ],
+    "links": [
+      {
+        "href": "/chanakya-to-krutidev",
+        "text": "Convert Chanakya back to Kruti Dev"
+      },
+      {
+        "href": "/font-chanakya",
+        "text": "Check the destination Chanakya font"
+      },
+      {
+        "href": "/font-krutidev",
+        "text": "Identify Kruti Dev 010 source text"
+      },
+      {
+        "href": "/",
+        "text": "Read Kruti Dev codes as Unicode"
+      }
+    ]
+  },
+  "chanakya-to-krutidev": {
+    "h1": "Chanakya to Kruti Dev 010 Hindi Converter",
+    "intro": "Convert legacy Chanakya text to Kruti Dev 010 codes for a document requiring the Remington font. Review the result with a licensed Kruti Dev 010 font applied.",
+    "howTitle": "Transfer Chanakya Hindi to Kruti Dev 010",
+    "steps": [
+      {
+        "title": "Paste Chanakya codes",
+        "text": "Check the original font is Chanakya. Copy a short passage, including its extended characters, into the source editor."
+      },
+      {
+        "title": "Convert to Kruti Dev 010",
+        "text": "ÖæÚUÌ becomes Hkkjr. Do not replace the extended source characters manually before converting."
+      },
+      {
+        "title": "Check the destination display",
+        "text": "Copy the result into Word, select Kruti Dev 010 and proofread against the original. The font is not embedded in a Word download."
+      }
+    ],
+    "exampleTitle": "Chanakya ÖæÚUÌ to Kruti Dev Hkkjr",
+    "input": "ÖæÚUÌ",
+    "output": "Hkkjr",
+    "explanation": "This changes the legacy encoding without translating the language. Keep the original publishing file; exact codes and document layout are not guaranteed to round-trip through conversion.",
+    "faqTitle": "Reviewing a Chanakya to Kruti Dev transfer",
+    "faqs": [
+      {
+        "question": "Can I just select Kruti Dev in the Chanakya document?",
+        "answer": "Convert the codes first. Choosing another legacy font without conversion can display incorrect Hindi glyphs."
+      },
+      {
+        "question": "What should I do if PDF copying loses characters?",
+        "answer": "Compare extracted text against the original before conversion. Missing characters cannot be recovered by this text tool; use the source document where possible."
+      },
+      {
+        "question": "Where can I obtain the output font?",
+        "answer": "Use a licensed Kruti Dev 010 copy from its publisher, your institution or the document supplier. This site does not distribute unlicensed font files."
+      }
+    ],
+    "links": [
+      {
+        "href": "/krutidev-to-chanakya",
+        "text": "Return Kruti Dev text to Chanakya"
+      },
+      {
+        "href": "/font-krutidev",
+        "text": "Install Kruti Dev 010"
+      },
+      {
+        "href": "/font-chanakya",
+        "text": "Check Chanakya source-font guidance"
+      },
+      {
+        "href": "/chanakya-to-unicode",
+        "text": "Use Unicode for sharing and searching"
+      }
+    ]
+  },
+  "preeti-to-unicode": {
+    "h1": "Preeti to Unicode Converter for Hindi Text",
+    "intro": "Paste Hindi text stored as Preeti legacy codes to get Unicode Hindi. This page covers the supported Preeti mapping for Hindi text; compare matras, nukta letters and punctuation with the original.",
+    "howTitle": "Read Hindi Preeti codes as Unicode",
+    "steps": [
+      {
+        "title": "Check the source is Preeti",
+        "text": "Copy text from the Preeti-formatted document and paste its raw codes. ef/t is a verified example for भारत."
+      },
+      {
+        "title": "Review the Unicode result",
+        "text": "Convert to Unicode and check the readable Hindi, especially marks and punctuation that may have changed during copying."
+      },
+      {
+        "title": "Copy Unicode Hindi",
+        "text": "Copy into your Unicode document or message, or download a Word file. Keep the original Preeti document for comparison."
+      }
+    ],
+    "exampleTitle": "Hindi Preeti example: ef/t to भारत",
+    "input": "ef/t",
+    "output": "भारत",
+    "outputHindi": true,
+    "explanation": "Preeti stores legacy codes, so the source may look like Latin letters. Curly quotes introduced by a publishing application can change those codes. Copy from the original where possible and check the result rather than assuming perfect recovery.",
+    "hindi": "प्रीति फ़ॉन्ट में लिखे हिंदी टेक्स्ट के कोड पेस्ट करें। यूनिकोड परिणाम में मात्राएँ और नुक्ते मूल पाठ से मिलाकर जाँचें।",
+    "faqTitle": "Checking Hindi text copied from Preeti",
+    "faqs": [
+      {
+        "question": "Why does the copied source look like ef/t?",
+        "answer": "Preeti stores legacy codes. In this mapping ef/t converts to भारत. The original codes display as Hindi only with the matching font."
+      },
+      {
+        "question": "Can curly quotes cause incorrect matras?",
+        "answer": "Yes. Preeti uses straight apostrophes and double quotes for ु and ू. Compare copied punctuation with the original; quote substitution may alter legacy codes."
+      },
+      {
+        "question": "Can this correct every Preeti document automatically?",
+        "answer": "No. This is a text conversion tool for the supported mapping. Font variants and extraction errors need review, particularly matras, nukta letters and punctuation."
+      }
+    ],
+    "links": [
+      {
+        "href": "/unicode-to-preeti",
+        "text": "Convert Hindi Unicode back to Preeti"
+      },
+      {
+        "href": "/font-preeti",
+        "text": "Identify and install a licensed Preeti font"
+      },
+      {
+        "href": "/fonts",
+        "text": "Compare legacy codes with Unicode Hindi"
+      }
+    ]
+  },
+  "unicode-to-preeti": {
+    "h1": "Unicode to Preeti Converter for Hindi Text",
+    "intro": "Convert readable Unicode Hindi to Preeti legacy codes for a document using that font. Apply a licensed Preeti font and review the Hindi display before using the document.",
+    "howTitle": "Prepare Hindi Unicode text for Preeti",
+    "steps": [
+      {
+        "title": "Paste Unicode Hindi",
+        "text": "Use readable Hindi from a document or message. भारत is a verified Unicode input."
+      },
+      {
+        "title": "Generate Preeti codes",
+        "text": "Use automatic conversion or Convert to Preeti. भारत becomes ef/t; the browser displays raw codes."
+      },
+      {
+        "title": "Apply Preeti and proofread",
+        "text": "Paste the result into Word or your publishing application and apply Preeti. Check matras, nukta letters and quotes against the Unicode original."
+      }
+    ],
+    "exampleTitle": "Hindi Unicode to Preeti: भारत to ef/t",
+    "input": "भारत",
+    "output": "ef/t",
+    "inputHindi": true,
+    "explanation": "The converted codes need the matching Preeti font. Keep Unicode for web and email use. A Word download selects Preeti without installing or embedding a font.",
+    "wordTitle": "Avoid quote substitution in publishing applications",
+    "wordSteps": [
+      "In InDesign, turn off Edit → Preferences → Type → Use Typographer’s Quotes before pasting Preeti codes.",
+      "For Word imports into InDesign, also turn off typographer’s quotes in import options and disable automatic hyphenation for legacy text.",
+      "Preeti uses straight apostrophes and double quotes for ु and ू. Re-paste freshly converted codes if quote replacement has already changed them."
+    ],
+    "faqTitle": "Using Hindi Preeti output safely",
+    "faqs": [
+      {
+        "question": "Why does भारत become ef/t?",
+        "answer": "ef/t is the verified Preeti output in this mapping. Apply Preeti in the destination application to display the Hindi letters."
+      },
+      {
+        "question": "Why do boxes or wrong matras appear after importing?",
+        "answer": "Confirm the matching font is applied and disable smart-quote replacement. Re-paste fresh codes after changing import settings, then compare with the original."
+      },
+      {
+        "question": "Does the download include a Preeti font file?",
+        "answer": "No. It does not install or embed legacy fonts. Obtain a licensed font from its publisher, your institution or the original document supplier."
+      }
+    ],
+    "links": [
+      {
+        "href": "/preeti-to-unicode",
+        "text": "Read Preeti Hindi as Unicode"
+      },
+      {
+        "href": "/font-preeti",
+        "text": "Read Preeti installation and quote guidance"
+      },
+      {
+        "href": "/fonts",
+        "text": "Choose the correct Hindi source font"
+      }
+    ]
+  },
+  "typing": {
+    "h1": "Remington Hindi Typing to Unicode",
+    "intro": "Enter Kruti Dev 010 Remington key codes in the source editor and read Unicode Hindi alongside them. Use the keyboard chart below to check keys and review your text before copying.",
+    "howTitle": "Type Hindi using Kruti Dev Remington keys",
+    "steps": [
+      {
+        "title": "Enter Remington key codes",
+        "text": "With an English keyboard input layout, type codes such as Hkkjr into the source editor. The chart shows each key’s Unicode reading."
+      },
+      {
+        "title": "Review Unicode as you type",
+        "text": "Keep Convert as I type enabled for live output, or select Convert to Unicode. Edit, select and correct text in the source editor."
+      },
+      {
+        "title": "Copy your Hindi text",
+        "text": "Copy the Unicode result into your document or message. Download Word creates a new document from the text."
+      }
+    ],
+    "exampleTitle": "Remington practice: fd becomes कि",
+    "input": "fd",
+    "output": "कि",
+    "outputHindi": true,
+    "explanation": "Type f before d to produce कि: the Kruti Dev code for the short-i matra precedes the consonant. For reph, deZ produces कर्म. These examples use the existing Kruti Dev 010 mapping.",
+    "hindi": "अंग्रेज़ी कीबोर्ड लेआउट में Remington के कोड टाइप करें। उदाहरण: fd से कि और deZ से कर्म। दूसरे बॉक्स में यूनिकोड हिंदी पढ़कर जाँचें।",
+    "faqTitle": "Remington Hindi typing questions",
+    "faqs": [
+      {
+        "question": "Is this an InScript or phonetic keyboard?",
+        "answer": "No. This tool reads Kruti Dev 010 Remington codes. Use the chart for key positions; it does not transliterate English words into Hindi."
+      },
+      {
+        "question": "Why does output stop updating while I type?",
+        "answer": "Check that Convert as I type is enabled. You can also use Convert to Unicode to update the result after editing the source."
+      },
+      {
+        "question": "Can I practice without installing Kruti Dev?",
+        "answer": "Yes. The source editor accepts raw key codes and the result shows Unicode Hindi. A matching legacy font is needed only when displaying legacy codes in another application."
+      }
+    ],
+    "links": [
+      {
+        "href": "/keyboard",
+        "text": "Open the full Kruti Dev keyboard guide"
+      },
+      {
+        "href": "/",
+        "text": "Convert an existing Kruti Dev passage"
+      },
+      {
+        "href": "/unicode-to-krutidev",
+        "text": "Create Kruti Dev codes from Unicode Hindi"
+      },
+      {
+        "href": "/font-krutidev",
+        "text": "Read Kruti Dev 010 font guidance"
+      }
+    ]
+  }
+};
 export const conversionContent: Record<string, ConversionContent> = {
+  ...secondaryContent,
   home, 'krutidev-to-unicode': home,
   'unicode-to-krutidev': {
     h1: 'Unicode to Kruti Dev 010 Converter',
