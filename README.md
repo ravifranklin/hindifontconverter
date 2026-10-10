@@ -1,4 +1,4 @@
-# Akshar — Hindi & Nepali font conversion
+# Akshar — Hindi font conversion
 
 Original responsive website with 14 direct converter routes, a Remington typing desk, local conversion, real OOXML Word exports, font guides, an original keyboard PDF, privacy page and configurable contact delivery.
 
@@ -73,8 +73,8 @@ A live local form will remain disabled until a local Worker rate-limit binding a
 | `/krutidev-to-chanakya` | Kruti Dev → Unicode → Chanakya |
 | `/krutidev-to-mangal` | Kruti Dev → Unicode, Mangal output presentation |
 | `/mangal-to-krutidev` | Mangal Unicode → Kruti Dev |
-| `/preeti-to-unicode` | Preeti → Nepali Unicode |
-| `/unicode-to-preeti` | Nepali Unicode → Preeti |
+| `/preeti-to-unicode` | Preeti → Hindi Unicode |
+| `/unicode-to-preeti` | Hindi Unicode → Preeti |
 | `/chanakya-to-unicode` | Chanakya → Unicode |
 | `/unicode-to-chanakya` | Unicode → Chanakya |
 | `/chanakya-to-krutidev` | Chanakya → Unicode → Kruti Dev |
@@ -109,7 +109,7 @@ Legacy ASCII is inherently ambiguous with English. Wrap literal spans in `[[doub
 
 ## Verification
 
-See `docs/TEST-REPORT.md`, `docs/reference-smoke.json`, `docs/reference-fixtures.json`, `docs/devlys-observations.json`, `docs/browser-checks.json` and `docs/REFERENCE-INVENTORY.md`. Unit expectations are written Hindi/Nepali text, not copies of the mapping table. Browser checks were also run interactively through the connected in-app browser. The Playwright suite is included for reproducible CI and covers additional composition and share interception scenarios.
+See `docs/TEST-REPORT.md`, `docs/reference-smoke.json`, `docs/reference-fixtures.json`, `docs/devlys-observations.json`, `docs/browser-checks.json` and `docs/REFERENCE-INVENTORY.md`. Unit expectations use independently written Devanagari text, not copies of the mapping table. Browser checks were also run interactively through the connected in-app browser. The Playwright suite is included for reproducible CI and covers additional composition and share interception scenarios.
 
 No accuracy percentage or guarantee of perfect round trips is claimed.
 

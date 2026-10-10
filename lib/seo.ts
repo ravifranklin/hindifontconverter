@@ -6,11 +6,11 @@ export const HOME_TITLE = 'Akshar - KrutiDev (Kruti Dev) To Unicode Converter';
 const support: Record<string, [string, string]> = {
   typing: ['Kruti Dev Typing to Unicode | Akshar', 'Type Hindi with the Remington keyboard and see Unicode text as you type. Review and copy your text in Akshar.'],
   keyboard: ['Kruti Dev Remington Keyboard Guide | Akshar', 'Explore the Kruti Dev Remington keyboard layout and learn which keys produce Hindi letters and marks.'],
-  fonts: ['Hindi and Nepali Font Guides | Akshar', 'Find installation and licensing guidance for Kruti Dev, Preeti and Chanakya, and learn how Mangal relates to Unicode.'],
+  fonts: ['Hindi Font Guides | Akshar', 'Find installation and licensing guidance for Kruti Dev, Preeti and Chanakya, and learn how Mangal relates to Unicode.'],
   'font-krutidev': ['Kruti Dev 010 Font Installation Guide | Akshar', 'Learn about the Kruti Dev 010 legacy Hindi font, installing a licensed copy, and converting its text to Unicode.'],
-  'font-preeti': ['Preeti Font Installation Guide | Akshar', 'Learn about the Preeti legacy Nepali font, installing a licensed copy, and converting between Preeti and Unicode text.'],
+  'font-preeti': ['Preeti Font Installation Guide | Akshar', 'Learn about the Preeti legacy font, installing a licensed copy, and converting between Preeti and Unicode text.'],
   'font-chanakya': ['Chanakya Font Installation Guide | Akshar', 'Learn about the Chanakya legacy Hindi font, installing a licensed copy, and converting its text to Unicode.'],
-  contact: ['Contact Akshar | Hindi and Nepali Font Converter', 'Find out how to contact Akshar about Hindi and Nepali font conversion and report a conversion problem.'],
+  contact: ['Contact Us | Hindi Font Converter', 'Contact our team for help with Hindi font conversion, report conversion issues, or send feedback about our free online Hindi font converter.'],
   privacy: ['Privacy Policy | Akshar Font Converter', 'Read how Akshar handles browser-based text conversion, shared drafts, contact messages and hosting access.'],
 };
 export const indexableSlugs = ['home', ...routes.map(route => route.slug), ...Object.keys(support)];
@@ -20,7 +20,7 @@ export function pageSeo(slug: string) {
   const title = home ? HOME_TITLE : route ? `${names[route.from]} to ${names[route.to]} Converter | Akshar` : support[slug]?.[0];
   const description = home
     ? 'Convert Kruti Dev Hindi text to Unicode with Akshar. Paste your text, convert it in your browser, and copy the result.'
-    : route ? `Convert ${names[route.from]} text to ${names[route.to]} in your browser with Akshar. Paste, review and copy your converted ${route.from === 'preeti' || route.to === 'preeti' ? 'Nepali' : 'Hindi'} text.` : support[slug]?.[1];
+    : route ? `Convert ${names[route.from]} text to ${names[route.to]} in your browser with Akshar. Paste, review and copy your converted Hindi text.` : support[slug]?.[1];
   if (!title || !description) return null;
   const url = SITE_ORIGIN + (home || slug === 'krutidev-to-unicode' ? '/' : `/${slug}`);
   return { title, description, url, application: home || !!route || slug === 'typing' };
