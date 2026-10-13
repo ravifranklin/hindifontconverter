@@ -4,6 +4,8 @@ import { names, routes } from './routes';
 export const SITE_ORIGIN = 'https://krutidevunicodefontconverter.com';
 export const HOME_TITLE = 'Kruti Dev to Unicode Converter | Hindi Font Converter';
 const support: Record<string, [string, string]> = {
+  'hindi-font-conversion-in-word': ['Hindi Font Conversion in Microsoft Word | Akshar', 'Identify Hindi fonts in Word, convert selected text between Kruti Dev, DevLys, Chanakya and Unicode, apply the destination font and proofread the result.'],
+  'hindi-font-conversion-troubleshooting': ['Hindi Font Conversion Troubleshooting Guide | Akshar', 'Find checks for incorrect Hindi output, legacy codes, matras, reph, smart quotes, PDF copying and missing fonts. Choose the matching converter and font guide.'],
   typing: ["Remington Hindi Typing to Unicode | Akshar","Type Kruti Dev 010 Remington codes and read Unicode Hindi alongside them. Practice verified matra and reph examples with the keyboard chart."],
   keyboard: ["Kruti Dev 010 Remington Hindi Keyboard Guide | Akshar","Read the Kruti Dev 010 Remington key chart, practice matra and reph sequences, and download the keyboard PDF. Includes verified Hindi typing examples."],
   fonts: ['Hindi Font Installation and Conversion Guides | Akshar', 'Compare Kruti Dev 010, DevLys 010, Preeti and Chanakya with Unicode Hindi. Identify your source font and find the matching converter and licensed installation guidance.'],

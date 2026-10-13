@@ -584,7 +584,7 @@ const secondaryContent: Record<string, ConversionContent> = {
       },
       {
         "title": "Review Unicode as you type",
-        "text": "Keep Convert as I type enabled for live output, or select Convert to Unicode. Edit, select and correct text in the source editor."
+        "text": "Unicode updates automatically as you edit the source. Updates pause during input-method composition and resume when it ends. Select Convert to Unicode if you want to run conversion manually."
       },
       {
         "title": "Copy your Hindi text",
@@ -605,7 +605,7 @@ const secondaryContent: Record<string, ConversionContent> = {
       },
       {
         "question": "Why does output stop updating while I type?",
-        "answer": "Check that Convert as I type is enabled. You can also use Convert to Unicode to update the result after editing the source."
+        "answer": "This typing page updates Unicode automatically; there is no live-conversion toggle here. Updates pause while an input method is composing text and resume when composition ends. You can also select Convert to Unicode after editing the source."
       },
       {
         "question": "Can I practice without installing Kruti Dev?",

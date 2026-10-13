@@ -15,5 +15,18 @@
 .direction-slot{display:flex;align-items:center;justify-content:center;padding:12px 7px;background:#f0f6f2;border-inline:1px solid #dfe6df}
 .direction-button{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;width:100%;min-height:86px;padding:12px 8px;border:1px solid #176355;background:#1d7461;color:white;font-size:12px;font-weight:600;line-height:1.4;box-shadow:0 3px 8px #174d3320}
 .direction-button:hover{background:#155a4b}
+.guide-links{display:flex;flex-wrap:wrap;gap:12px 24px;margin:24px 0;color:#21765f;font-size:13px}
+.guide-links a,.conversion-help a,.conversion-guide a:not(.back){text-decoration:underline;text-underline-offset:3px}
+.conversion-help{padding:12px 24px;background:#f3f6ef;border:1px solid #dce3de;border-radius:8px;margin:16px 0}
+.conversion-help p{font-size:12px;margin:8px 0}
+.conversion-help code,.conversion-guide code{overflow-wrap:anywhere}
+.conversion-guide{max-width:900px}.conversion-guide ul{padding-left:22px;list-style:disc}.conversion-guide p,.conversion-guide li{font-size:14px}
+.guide-table-wrap{max-width:100%;overflow-x:auto;margin:20px 0}
+.guide-table{width:100%;border-collapse:collapse;background:white;font-size:13px;min-width:600px}
+.guide-table caption{text-align:left;padding:0 0 12px;color:#63716b}
+.guide-table th,.guide-table td{padding:14px;text-align:left;vertical-align:top;border:1px solid #dce3de}
+.guide-table thead{background:#edf4ec}.guide-table tbody th{width:25%;font-weight:600}
+footer div{flex-wrap:wrap}
+@media(max-width:600px){.conversion-help{padding:12px 16px}.conversion-guide h1{overflow-wrap:anywhere}}
 .direction-button:focus-visible{outline:3px solid #233533;outline-offset:3px}
 @media(max-width:600px){.editors.with-direction{grid-template-columns:minmax(0,1fr)}.direction-slot{border-inline:0;border-block:1px solid #dfe6df;padding:12px 18px}.direction-button{flex-direction:row;min-height:46px;width:auto;padding:10px 20px}.direction-button svg{transform:rotate(90deg)}}
